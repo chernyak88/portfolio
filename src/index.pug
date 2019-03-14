@@ -1,4 +1,7 @@
 include ./mixins.pug
+//+image('content/user.jpg', 'user-pic')
+//+icon('link', 'link-class')
+//.icon-bg
 
 <!DOCTYPE html>
 html(lang="en")
@@ -6,10 +9,80 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    title Portfolio | main page
+    title Portfolio | Igor Chernyak
+    link(rel="stylesheet", href="./styles/main.pcss")
   body
     .wrapper
       .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+        section.double-section
+          .container  
+            section.fullscreen-section.hero
+              .container.hero__container
+                header.header
+                  .header__initials 
+                    a.header__initials-link ИЧ
+                  .header__menu
+                    nav.nav
+                      ul.nav__list
+                        li.nav__item
+                          a.nav__link Главная
+                        li.nav__item
+                          a.nav__link Обо мне
+                        li.nav__item
+                          a.nav__link Навыки
+                        li.nav__item
+                          a.nav__link Работы
+                        li.nav__item
+                          a.nav__link Отзывы
+                        li.nav__item
+                          a.nav__link Связаться
+                  .header__social
+                    a.header__social-link 
+                      +icon('insta', 'header__social-icon')
+                    a.header__social-link 
+                      +icon('vk', 'header__social-icon')
+                    a.header__social-link 
+                      +icon('github', 'header__social-icon')
+                .mysite
+                  .mysite__title Личный сайт веб разработчика
+                  h1.mysite__name Игорь Черняк
+                .arrow-down Скролл
+                  a.arrow-down__link
+                    +icon('scroll', 'arrow-down__icon')
+            section.fullscreen-section.about
+              .container.about__container
+                .about__left
+                  .about__photo
+                    +image('content/user.jpg', 'about__photo-pic')
+                  .about__me
+                    ul.about__me-left
+                      li.about__me-left--item Проживаю:
+                      li.about__me-left--item Возраст:
+                      li.about__me-left--item Родился:
+                    ul.about__me-right
+                      li.about__me-right--item Зеленоград
+                      li.about__me-right--item 30 лет
+                      li.about__me-right--item 11 ноября 1988
+                .about__right
+                  .about__hi Привет, меня зовут
+                  .about__name Игорь Черняк
+                  .about__work Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+                  .about__this-site Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+        section.fullscreen-section.skills
+          .container.skills__container
+            .bag
+              +image('content/bag.png', 'bag-pic')
+            .myskills
+              .myskills__desc
+                .myskills__desc-title Чем я могу быть полезен вам
+                .myskills__desc-text Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+              .myskills__diagram
+                .myskills__frontend
+                .myskills__workflow
+
+          
+
+
+
+
+          
