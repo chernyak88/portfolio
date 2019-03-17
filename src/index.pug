@@ -156,21 +156,25 @@ html(lang="en")
                 label.form__block
                   .form__text Введите ваше имя
                   input(type="text", placeholder="Ковальчук Дмитрий").form__input
+                  +icon('user', 'form__icon')
                 label.form__block
                   .form__text Введите ваш email
                   input(type="text", placeholder="loftschool@study.com").form__input
+                  +icon('envelope', 'form__icon')
               .form__row
                 label.form__block
                   .form__text Сообщение к письму
                   input(type="text", placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса").form__input.form__input--full
+                  +icon('message', 'form__icon')
               input(type="submit", value="Отправить").form__button
         footer.footer
           .container.footer__container
             .footer__copyright
               .copyright
-                .copyright__year 2019
-                .copyright__username Игорь Черняк
-                .copyright__desc Личный сайт веб-разработчика
+                .copyright__year &copy;2019
+                .copyright__text
+                  .copyright__username Игорь Черняк
+                  .copyright__desc Личный сайт веб-разработчика
             .footer__data
               .footer__menu
                 nav.nav.nav--color-white
@@ -190,6 +194,7 @@ html(lang="en")
                 .footer__data-col
                   article.footer__text
                     p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+                  .footer__text-author Martin Golding
 
                     
 
