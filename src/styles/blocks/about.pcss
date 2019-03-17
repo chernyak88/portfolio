@@ -1,3 +1,7 @@
+.about {
+  height: 100vh;
+}
+
 .about__container {
   display: flex;
   height: 100%;
@@ -9,10 +13,10 @@
 .about__left {
   height: 50%;
   width: 25%;
-  margin-right: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-right: 80px;
 }
 
 .about__right {
@@ -20,65 +24,61 @@
   width: 38%;
 }
 
-.about__photo {
-  margin-bottom: 70px;
+.user__avatar {
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
 }
 
-.about__photo-pic {
+.user__avatar-pic {
   border-radius: 50%;
   max-width: 200px;
   max-height: 200px;
 }
 
-.about__me {
-  display: flex;
-}
-
-.about__me-left {
+.user__data-cell {
+  font-weight: 700;
+  color: #414c63;
   opacity: 0.3;
-  color: #414c63;
-  font-weight: 700;
-  line-height: 40px;
-  margin-right: 75px;
+  line-height: 1.8em;
+  padding: 0 25px;
+
+  &:last-child {
+    opacity: 1;
+  }
 }
 
-.about__me-right {
-  color: #414c63;
-  font-weight: 700;
-  line-height: 40px;
-}
-
-.about__hi {
+.about__welcome {
   opacity: 0.5;
   color: #414c63;
   font-weight: 700;
   margin-bottom: 20px;
 }
 
-.about__name {
+.about__username {
   color: #414c63;
   font-size: 36px;
   font-weight: 700;
   margin-bottom: 38px;
 }
 
-.about__work {
+.about__desc {
   opacity: 0.5;
   color: #414c63;
   font-weight: 700;
   margin-bottom: 80px;
 }
 
-.about__this-site {
+.about__ps {
   opacity: 0.5;
   color: #414c63;
   font-style: italic;
   position: relative;
 }
 
-.about__this-site:before {
+.about__ps:before {
   content: url('../images/icons/star.png');
   position: absolute;
   top: 0;
-  left: -10%;
+  left: -8%;
 }

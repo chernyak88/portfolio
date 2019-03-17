@@ -1,0 +1,153 @@
+.works__container {
+  height: 100%;
+  display: flex;
+}
+
+.works__left {
+  width: 60%;
+  height: 80%;
+  margin-right: 7%;
+}
+
+.works__title {
+  margin-bottom: 60px;
+}
+
+.works__slider {
+  width: 100%;
+  height: 80%;
+  background-image: url('../images/slider/slider.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  &:before {
+    content: '';
+    height: 50%;
+    width: 25%;
+    background-image: url('../images/slider/number_4.png');
+    position: absolute;
+    top: 20%;
+    right: -20%;
+  }
+}
+
+.works__slider-list {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 20%;
+  height: 80%;
+}
+
+.works__slider-item {
+  height: 25%;
+  width: 100%;
+
+  &:nth-child(1) {
+    background-image: url('../images/slider/1.jpg');
+  }
+
+  &:nth-child(2) {
+    background-image: url('../images/slider/2.jpg');
+  }
+
+  &:nth-child(3) {
+    background-image: url('../images/slider/3.jpg');
+  }
+
+  &:nth-child(4) {
+    background-image: url('../images/slider/4.jpg');
+  }
+
+  &--active {
+    border: 2px solid #f29400;
+  }
+}
+
+.work__slider-prev, .work__slider-next {
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #2d3c4e;
+}
+
+.work__slider-prev {
+  bottom: -50px;
+  right: 51px;
+}
+
+.work__slider-next {
+  bottom: -50px;
+  right: 0;
+}
+
+.work__slider-prev-icon, .work__slider-next-icon {
+  height: 8px;
+  width: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+}
+
+.works__right {
+  width: 25%;
+  padding: 110px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.works__right-skills {
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.works__right-skills__item {
+  font-size: 15px;
+  font-weight: 700;
+  opacity: 0.7;
+  padding: 10px;
+  background-color: #f2f5f9;
+  border-radius: 15px;
+  margin-right: 15px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.works__right-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.works__right-desc {
+  font-weight: 700;
+  opacity: 0.7;
+  margin-bottom: 40px;
+}
+
+.works__right-view {
+  color: #4b6fd7;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.works__right-view-icon {
+  width: 15px;
+  height: 15px;
+  fill: #4b6fd7;
+  margin-right: 10px;
+}
+
+.works__right-view-link {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
