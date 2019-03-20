@@ -2,6 +2,10 @@
   margin-bottom: 30px;
   font-size: 24px;
   font-weight: 700;
+
+  @include desktop {
+    margin-bottom: 15px;
+  }
 }
 
 .skills-row__item {
@@ -9,6 +13,14 @@
   font-size: 18px;
   opacity: 0.5;
   font-weight: 700;
+
+  @include desktop {
+    font-size: 15px;
+  }
+
+  @include tablets {
+    font-size: 12px;
+  }
 }
 
 .skills-row__list {

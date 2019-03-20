@@ -1,5 +1,12 @@
 .form-section {
   padding: 0 100px;
+
+  @include tablets {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .form-section__title {
@@ -10,6 +17,14 @@
   width: 60%;
   display: flex;
   flex-direction: column;
+
+  @include desktop {
+    width: 80%;
+  }
+
+  @include tablets {
+    width: 95%;
+  }
 }
 
 .form__row {
@@ -99,4 +114,8 @@ input:-ms-input-placeholder {text-overflow:ellipsis;}
   color: #fff;
   text-transform: uppercase;
   cursor: pointer;
+
+  @include tablets {
+    margin: 0 auto;
+  }
 }

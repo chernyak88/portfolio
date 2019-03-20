@@ -3,6 +3,11 @@
   flex-direction: column;
   justify-content: center;
   padding: 180px 100px;
+
+  @include desktop {
+    padding: 180px 30px;
+    justify-content: flex-start;
+  }
 }
 
 .reviews__title {
@@ -12,6 +17,10 @@
 
 .reviews__section-title {
   margin-right: 90px;
+
+  @include tablets {
+    margin-right: 10px;
+  }
 }
 
 .reviews__slider-controls {
@@ -29,6 +38,10 @@
 
 .reviews__slider-prev {
   margin-right: 30px;
+
+  @include tablets {
+    margin-right: 10px;
+  }
 }
 
 .reviews__slider-prev-icon, .reviews__slider-next-icon {
@@ -56,6 +69,16 @@
   &:last-child {
     margin-right: 0;
   }
+
+  @include desktop {
+    width: 40%;
+    margin-right: 30px;
+  }
+
+  @include tablets {
+    width: 45%;
+    margin-right: 30px;
+  }
 }
 
 .quote__text {
@@ -68,11 +91,19 @@
   &:before {
     content: url('../images/icons/left-quote.png');
     margin-right: 25px;
+
+      @include tablets {
+        display: none;
+    }
   }
 }
 
 .quote__author {
   margin-left: 100px;
+
+  @include tablets {
+    margin-left: 0;
+  }
 }
 
 .user--horizontal {

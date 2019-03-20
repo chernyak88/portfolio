@@ -11,10 +11,18 @@
 
 .footer__copyright {
   width: 25%;
+
+  @include tablets {
+    width: 35%;
+  }
 }
 
 .copyright {
   display: flex;
+
+  @include desktop {
+      flex-direction: column;
+    }
 
   &__year {
     opacity: 0.1;
@@ -39,15 +47,32 @@
 
 .footer__data {
   width: 65%;
+
+  @include desktop {
+      width: 75%;
+  }
+
+  @include tablets {
+    width: 65%;
+  }
 }
 
 .footer__data-columns {
   display: flex;
+
+  @include tablets {
+    flex-direction: column;
+  }
 }
 
 .footer__data-col {
   width: 40%;
   margin-right: 15%;
+
+  @include tablets {
+    width: 100%;
+    margin-right: 0;
+  }
 
   &:last-child {
     margin-right: 0;

@@ -21,4 +21,18 @@
   display: flex;
   justify-content: center;
   margin: 0 20px;
+
+  @include desktop {
+    margin: 0 10px;
+  }
+
+   @include tablets {
+    display: none;
+  }
+}
+
+.header__links {
+  @include tablets {
+    margin-right: 100px;
+  }
 }

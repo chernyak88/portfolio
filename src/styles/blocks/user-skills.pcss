@@ -1,8 +1,17 @@
 .user-skills {
   width: 63%;
   align-self: flex-end;
+
+  @include tablets {
+    width: 95%;
+    align-self: center;
+  }
 }
 
 .user-skills__item {
   margin-bottom: 35px;
+
+  @include desktop {
+    margin-bottom: 10px;
+  }
 }

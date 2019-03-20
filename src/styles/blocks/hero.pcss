@@ -17,6 +17,19 @@
   text-align: center;
 }
 
+.user-info {
+  @include desktop {
+    display: flex;
+    justify-content: center;
+  }
+  @include tablets {
+		display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 .user__info-desc {
   width: 160px;
   font-size: 18px;
@@ -25,6 +38,17 @@
   color: #414c63;
   opacity: .6;
   margin: 0 auto;
+
+  @include desktop {
+    width: 158px;
+    text-align: right;
+    margin-right: 60px;
+  }
+
+   @include tablets {
+		text-align: center;
+    margin: 0 auto;
+  }
 }
 
 .user__info-name {
@@ -33,11 +57,23 @@
   font-size: 72px;
   font-weight: 800;
   line-height: 1em;
+
+  @include desktop {
+    text-align: left;
+  }
+  
+  @include tablets {
+    text-align: center;
+  }
 }
 
 .hero__bottom-buttons {
   display: flex;
   justify-content: center;
+
+  @include tablets {
+    display: none;
+  }
 }
 
 .scroll-down-button {

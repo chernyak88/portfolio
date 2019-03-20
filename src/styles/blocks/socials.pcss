@@ -3,6 +3,11 @@
   align-items: center;
 
   &--rounded {
+    .socials__item {
+      @include desktop {
+      margin-right: 20px;
+      }
+    }
     .socials__link {
       border: 1px solid #62656c;
       border-radius: 50%;

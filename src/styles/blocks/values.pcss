@@ -1,24 +1,50 @@
 .values {
   background-image: url('../images/content/bag.png');
   background-repeat: no-repeat;
-  background-size:  40% auto;
-  background-position: 0 40%;
+  background-size:  60% auto;
+  background-position: -30% 40%;
+
+  @include desktop {
+    background-size:  60% auto;
+    background-position: -40% 40%;
+  }
+
+  @include tablets {
+    background-size:  50% auto;
+    background-position: 50% 100%;
+  }
 }
 
 .values__container {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @include tablets {
+    text-align: center;
+  }
 }
 
 .values__title {
   font-weight: 700;
   width: 42%;
   margin-bottom: 70px;
+
+  @include desktop {
+    margin-bottom: 30px;
+  }
+
+  @include tablets {
+    width: 75%;
+  }
 }
 
 .values__title-text {
   margin-bottom: 40px;
+
+  @include tablets {
+    margin-bottom: 20px;
+  }
 }
 
 .values__desc {
