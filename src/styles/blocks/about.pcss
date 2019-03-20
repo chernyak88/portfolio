@@ -1,0 +1,84 @@
+.about {
+  height: 100vh;
+}
+
+.about__container {
+  display: flex;
+  height: 100%;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.about__left {
+  height: 50%;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 80px;
+}
+
+.about__right {
+  height: 50%;
+  width: 38%;
+}
+
+.user__avatar {
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.user__avatar-pic {
+  border-radius: 50%;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.user__data-cell {
+  font-weight: 700;
+  color: #414c63;
+  opacity: 0.3;
+  line-height: 1.8em;
+  padding: 0 25px;
+
+  &:last-child {
+    opacity: 1;
+  }
+}
+
+.about__welcome {
+  opacity: 0.5;
+  color: #414c63;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.about__username {
+  color: #414c63;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 38px;
+}
+
+.about__desc {
+  opacity: 0.5;
+  color: #414c63;
+  font-weight: 700;
+  margin-bottom: 80px;
+}
+
+.about__ps {
+  opacity: 0.5;
+  color: #414c63;
+  font-style: italic;
+  position: relative;
+}
+
+.about__ps:before {
+  content: url('../images/icons/star.png');
+  position: absolute;
+  top: 0;
+  left: -8%;
+}

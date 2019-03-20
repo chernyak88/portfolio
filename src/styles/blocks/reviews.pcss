@@ -1,0 +1,95 @@
+.reviews {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 180px 100px;
+}
+
+.reviews__title {
+  margin-bottom: 80px;
+  display: flex;
+}
+
+.reviews__section-title {
+  margin-right: 90px;
+}
+
+.reviews__slider-controls {
+  display: flex;
+}
+
+.reviews__slider-prev, .reviews__slider-next {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #515c70;
+  border-radius: 50%;
+  position: relative;
+}
+
+.reviews__slider-prev {
+  margin-right: 30px;
+}
+
+.reviews__slider-prev-icon, .reviews__slider-next-icon {
+  width: 8px;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #9ca3b0;
+}
+
+.reviews__slider-prev-icon {
+  transform: translate(-50%,-50%) rotate(-180deg);
+}
+
+.reviews__slider {
+  display: flex;
+}
+
+.reviews__slider-item {
+  width: 30%;
+  margin-right: 70px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.quote__text {
+  display: flex;
+  min-height: 200px;
+  opacity: 0.5;
+  font-weight: 700;
+  line-height: 1.7em;
+
+  &:before {
+    content: url('../images/icons/left-quote.png');
+    margin-right: 25px;
+  }
+}
+
+.quote__author {
+  margin-left: 100px;
+}
+
+.user--horizontal {
+  display: flex;
+
+  .user__avatar {
+    margin-right: 25px;
+  }
+}
+
+.user__name {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.user__occ {
+  opacity: 0.3;
+  font-weight: 700;
+}
