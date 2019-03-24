@@ -7,20 +7,45 @@
 .footer__container {
   display: flex;
   justify-content: space-between;
+
+  @include phones {
+    flex-direction: column;
+  }
 }
 
 .footer__copyright {
   width: 25%;
+
+  @include tablets {
+    width: 35%;
+  }
+
+  @include phones {
+    width: 95%;
+  }
 }
 
 .copyright {
   display: flex;
+
+  @include desktop {
+      flex-direction: column;
+    }
+
+  @include phones {
+      margin-bottom: 20px;
+    }
 
   &__year {
     opacity: 0.1;
     font-size: 48px;
     font-weight: 700;
     margin-right: 50px;
+
+    @include phones {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
   }
 
   &__username {
@@ -39,15 +64,36 @@
 
 .footer__data {
   width: 65%;
+
+  @include desktop {
+      width: 75%;
+  }
+
+  @include tablets {
+    width: 65%;
+  }
+
+  @include phones {
+    width: 95%;
+  }
 }
 
 .footer__data-columns {
   display: flex;
+
+  @include tablets {
+    flex-direction: column;
+  }
 }
 
 .footer__data-col {
   width: 40%;
   margin-right: 15%;
+
+  @include tablets {
+    width: 100%;
+    margin-right: 0;
+  }
 
   &:last-child {
     margin-right: 0;

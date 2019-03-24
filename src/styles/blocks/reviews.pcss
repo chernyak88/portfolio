@@ -1,8 +1,13 @@
-.reviews {
+.reviews-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 180px 100px;
+
+  @include desktop {
+    padding: 180px 30px;
+    justify-content: flex-start;
+  }
 }
 
 .reviews__title {
@@ -12,6 +17,10 @@
 
 .reviews__section-title {
   margin-right: 90px;
+
+  @include tablets {
+    margin-right: 10px;
+  }
 }
 
 .reviews__slider-controls {
@@ -25,10 +34,24 @@
   border: 1px solid #515c70;
   border-radius: 50%;
   position: relative;
+  background: transparent;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background: #fff;
+    transition: .3s;
+  }
 }
 
 .reviews__slider-prev {
   margin-right: 30px;
+
+  @include tablets {
+    margin-right: 10px;
+  }
 }
 
 .reviews__slider-prev-icon, .reviews__slider-next-icon {
@@ -45,17 +68,21 @@
   transform: translate(-50%,-50%) rotate(-180deg);
 }
 
-.reviews__slider {
-  display: flex;
+.reviews__content {
+  overflow: hidden;
 }
 
-.reviews__slider-item {
-  width: 30%;
-  margin-right: 70px;
-
-  &:last-child {
-    margin-right: 0;
+.reviews__content-wrapper {
+    display: flex;
+    align-items: flex-start;
+    will-change: transform;
+    transition: transform .3s;
   }
+
+.reviews__content-item {
+  flex-shrink: 0;
+  padding-right: 30px;
+  width: 50%;
 }
 
 .quote__text {
@@ -68,11 +95,19 @@
   &:before {
     content: url('../images/icons/left-quote.png');
     margin-right: 25px;
+
+      @include tablets {
+        display: none;
+    }
   }
 }
 
 .quote__author {
   margin-left: 100px;
+
+  @include tablets {
+    margin-left: 0;
+  }
 }
 
 .user--horizontal {

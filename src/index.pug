@@ -1,13 +1,10 @@
 include ./mixins.pug
-//+image('content/user.jpg', 'user-pic')
-//+icon('link', 'link-class')
-//.icon-bg
 
 <!DOCTYPE html>
-html(lang="en")
+html(lang="ru")
   head
     meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title Portfolio | Igor Chernyak
     link(rel="stylesheet", href="./styles/main.pcss")
@@ -15,6 +12,21 @@ html(lang="en")
     .wrapper
       .maincontent
         .welcome-section
+          section.parallax
+            .parallax__layer(data-speed="0.40")
+              +image('parallax/mountains/1.jpg', 'parallax__image')
+            .parallax__layer(data-speed="0.25")
+              +image('parallax/mountains/2.png', 'parallax__image')
+            .parallax__layer(data-speed="0.35")
+              +image('parallax/mountains/3.png', 'parallax__image')
+            .parallax__layer(data-speed="0.38")
+              +image('parallax/mountains/4.png', 'parallax__image')
+            .parallax__layer(data-speed="0.45")
+              +image('parallax/mountains/5.png', 'parallax__image')
+            .parallax__layer(data-speed="0.48")
+              +image('parallax/mountains/6.png', 'parallax__image')
+            .parallax__layer(data-speed="0.5")
+              +image('parallax/mountains/7.png', 'parallax__image')
           section.hero
             .container.hero__container
               header.header
@@ -72,83 +84,17 @@ html(lang="en")
               h2.section-title.values__title-text.section-title--small Чем я могу быть полезен вам
               article.values__desc
                 p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-            ul.user-skills
-              -
-                var skills = [
-                  ['Front-end', ['HTML5', 'CSS3', 'javascript', 'jquery и Vue.js']],
-                  ['Workflow', ['GIT', 'Terminal', 'Gulp', 'Webpack']],
-                ]
-              each item in skills
-                li.user-skills__item.skills-row
-                  h3.skills-row__title #{item[0]}
-                  ul.skills-row__list
-                    each skill in item[1]
-                      li.skills-row__item.skill
-                        svg(viewBox="0 0 100 100" preserveAspectRatio="none").skill__shape
-                          defs
-                            lineargradient#gradient(x1='0', y1='0', x2='0', y2='100%')
-                              stop(offset='0%', stop-color='#5500f2')
-                              stop(offset='100%', stop-color='#8f00ef')
-                          circle(r="40" cx="50" cy="50").skill__circle.skill__circle-under
-                          circle(r="40" cx="50" cy="50"
-                            stroke="url(#gradient)"
-                            transform="rotate(-180 50 50)"
-                            stroke-dashoffset=`${item.progress}`).skill__circle.skill__circle-above
-                          span.skill__title #{skill}
+            .values__widget
+              #skills-component
+            .values__widget-tablets
         section.fullscreen-section.works
           .container.works__container
-            .works__left
-              h2.section-title.works__title Мои работы
-              .works__slider
-                ul.works__slider-list
-                  li.works__slider-item
-                  li.works__slider-item
-                  li.works__slider-item
-                  li.works__slider-item.works__slider-item--active
-                a(href="").work__slider-prev
-                  +image('icons/arrow-button-up.png', 'work__slider-prev-icon')
-                a(href="").work__slider-next
-                  +image('icons/arrow-button.png', 'work__slider-next-icon')
-            .works__right
-              ul.works__right-skills
-                li.works__right-skills__item HTML
-                li.works__right-skills__item CSS
-                li.works__right-skills__item javascript
-              .works__right-title Сайт школы образования
-              .works__right-desc Этот парень проходил обучение веб-разработке не где-то, а в Loftschool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-              .works__right-view
-                +icon('link', 'works__right-view-icon')
-                a(href="").works__right-view-link Посмотреть сайт
+            h2.section-title.works__section-title Мои работы
+            .works__content
+              #slider-component
         .bottom-section
-          section.reviews
-            .reviews__title
-              .section-title.reviews__section-title Что обо мне говорят
-              .reviews__slider-controls
-                a(href="").reviews__slider-prev
-                  +icon('arrow-down', 'reviews__slider-prev-icon')
-                a(href="").reviews__slider-next
-                  +icon('arrow-down', 'reviews__slider-next-icon')
-            ul.reviews__slider
-              li.reviews__slider-item
-                .quote
-                  article.quote__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-                  .quote__author
-                    .user.user--horizontal
-                      .user__avatar
-                        +image('content/kovalchuk.png', 'user__avatar-pic')
-                      .user__data
-                        .user__name Ковальчук Дмитрий
-                        .user__occ Основатель Loftschool
-              li.reviews__slider-item
-                .quote
-                  article.quote__text Этот код выдержит любые испытания. Только, пожалуйста, не загружайте сайт на слишком старых браузерах
-                  .quote__author
-                    .user.user--horizontal
-                      .user__avatar
-                        +image('content/sabancev.png', 'user__avatar-pic')
-                      .user__data
-                        .user__name Владимир Сабанцев
-                        .user__occ Преподаватель
+          section.reviews-section
+            #reviews-component
           section.form-section
             .section-title.form-section__title Связаться со мной
             form(action="").form
@@ -195,7 +141,10 @@ html(lang="en")
                   article.footer__text
                     p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
                   .footer__text-author Martin Golding
+      .hamburger-menu
+        .hamburger-menu__link
 
+    include ./templates/entry.pug
                     
 
 

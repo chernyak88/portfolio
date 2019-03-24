@@ -1,20 +1,47 @@
 .form-section {
   padding: 0 100px;
+
+  @include tablets {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .form-section__title {
   margin-bottom: 80px;
+
+  @include phones {
+    padding-left: 15px;
+  }
 }
 
 .form {
   width: 60%;
   display: flex;
   flex-direction: column;
+
+  @include desktop {
+    width: 80%;
+  }
+
+  @include tablets {
+    width: 95%;
+  }
+
+  @include phones {
+    text-align: center;
+  }
 }
 
 .form__row {
   display: flex;
   margin-bottom: 35px;
+
+  @include phones {
+    flex-direction: column;
+  }
 }
 
 .form__block {
@@ -23,6 +50,11 @@
 
   &:first-child {
     margin-right: 20px;
+
+    @include phones {
+      margin-right: 0;
+      margin-bottom: 35px;
+    }
   }
 }
 
@@ -33,6 +65,10 @@
   position: absolute;
   top: 40px;
   left: 0;
+
+  @include phones {
+      display: none;
+    }
 }
 
 .form__input {
@@ -55,12 +91,20 @@
 input::-webkit-input-placeholder {
   color: #414c63;
   font-weight: 700;
+
+  @include phones {
+    text-align: center;
+  }
 }
 
 input:-moz-placeholder {
   color: #414c63;
   font-size: 18px;
   font-weight: 700;
+
+  @include phones {
+    text-align: center;
+  }
 }
 
 input[placeholder]          {text-overflow:ellipsis;}
@@ -99,4 +143,12 @@ input:-ms-input-placeholder {text-overflow:ellipsis;}
   color: #fff;
   text-transform: uppercase;
   cursor: pointer;
+
+  @include tablets {
+    margin: 0 auto;
+  }
+
+  @include phones {
+    width: 300px;
+  }
 }

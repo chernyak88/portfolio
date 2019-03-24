@@ -1,28 +1,87 @@
 .values {
   background-image: url('../images/content/bag.png');
   background-repeat: no-repeat;
-  background-size:  40% auto;
-  background-position: 0 40%;
+  background-size:  50% auto;
+  background-position: -10% 40%;
+  min-height: 100vh;
+
+  @include desktop {
+    background-size:  60% auto;
+    background-position: -40% 40%;
+  }
+
+  @include tablets {
+    background-image: none;
+  }
 }
 
 .values__container {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @include tablets {
+    text-align: center;
+  }
 }
 
 .values__title {
   font-weight: 700;
   width: 42%;
   margin-bottom: 70px;
+
+  @include desktop {
+    margin-bottom: 30px;
+  }
+
+  @include tablets {
+    width: 75%;
+  }
+
+  @include phones {
+    text-align: left;
+    width: 90%;
+  }
 }
 
 .values__title-text {
   margin-bottom: 40px;
+
+  @include tablets {
+    margin-bottom: 20px;
+  }
 }
 
 .values__desc {
   opacity: 0.5;
   color: #414c63;
   line-height: 1.8em;
+}
+
+.values__widget {
+  width: 60%;
+  align-self: flex-end;
+
+  @include tablets {
+    width: 100%;
+  }
+}
+
+.values__widget-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.values__widget-tablets {
+  display: none;
+
+  @include tablets {
+    display: flex;
+    min-height: 350px;
+    width: 100%;
+    background-image: url('../images/content/bag.png');
+    background-repeat: no-repeat;
+    background-size:  50% auto;
+    background-position: 60% 0;
+  }
 }

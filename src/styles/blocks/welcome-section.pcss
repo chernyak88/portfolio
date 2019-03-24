@@ -1,5 +1,15 @@
 .welcome-section {
-  background: url('../images/bg/Mountain_Baloon.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
+  position: relative;
+
+   @include super-wide {
+    background: url('~images/bg/hero_wide.jpg') center top no-repeat / cover;
+  }
+
+  @include tablets {
+    background: url('~images/bg/hero.jpg') center top no-repeat / cover;
+  }
+
+  @include phones {
+    background-position: 60% 50%;
+  }
 }

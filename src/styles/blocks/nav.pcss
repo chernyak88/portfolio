@@ -9,6 +9,10 @@
   &:last-child {
     margin-right: 0;
   }
+
+  @include desktop {
+    margin-right: 25px;
+  }
 }
 
 .nav__link {
@@ -21,4 +25,20 @@
 
 .nav--color-white {
   margin-bottom: 60px;
+
+  @include tablets {
+      margin-bottom: 0;
+    }
+
+  .nav__list {
+      @include tablets {
+        display: flex;
+        flex-wrap: wrap;
+    }
+  }
+  .nav__item {
+    @include tablets {
+      margin-bottom: 20px;
+    }
+  }
 }

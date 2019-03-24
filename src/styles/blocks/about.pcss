@@ -1,5 +1,6 @@
 .about {
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
 }
 
 .about__container {
@@ -8,6 +9,10 @@
   position: relative;
   justify-content: center;
   align-items: center;
+
+  @include phones {
+    flex-direction: column;
+  }
 }
 
 .about__left {
@@ -17,11 +22,39 @@
   flex-direction: column;
   align-items: center;
   margin-right: 80px;
+
+  @include tablets {
+    width: 55%;
+    margin-right: 20px;
+  }
+
+  @include phones {
+    width: 95%;
+    margin-right: 0;
+    margin-bottom: 40px;
+  }
 }
 
 .about__right {
-  height: 50%;
+  height: 45%;
   width: 38%;
+
+  @include tablets {
+    width: 50%;
+  }
+
+  @include phones {
+    width: 95%;
+    margin-right: 0;
+  }
+}
+
+.user {
+  @include phones {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .user__avatar {
@@ -46,6 +79,18 @@
   &:last-child {
     opacity: 1;
   }
+
+  @include tablets {
+    padding: 2px;
+  }
+
+  @include phones {
+    padding-right: 40px;
+
+    &:last-child {
+      padding-right: 0;
+  }
+  }
 }
 
 .about__welcome {
@@ -53,6 +98,10 @@
   color: #414c63;
   font-weight: 700;
   margin-bottom: 20px;
+
+  @include tablets {
+    margin-bottom: 10px;
+  }
 }
 
 .about__username {
@@ -60,6 +109,10 @@
   font-size: 36px;
   font-weight: 700;
   margin-bottom: 38px;
+
+  @include tablets {
+    margin-bottom: 20px;
+  }
 }
 
 .about__desc {
@@ -67,6 +120,10 @@
   color: #414c63;
   font-weight: 700;
   margin-bottom: 80px;
+
+  @include tablets {
+    margin-bottom: 30px;
+  }
 }
 
 .about__ps {
