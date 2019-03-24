@@ -11,6 +11,10 @@
 
 .form-section__title {
   margin-bottom: 80px;
+
+  @include phones {
+    padding-left: 15px;
+  }
 }
 
 .form {
@@ -25,11 +29,22 @@
   @include tablets {
     width: 95%;
   }
+<<<<<<< HEAD
+=======
+
+  @include phones {
+    text-align: center;
+  }
+>>>>>>> b5e500df0a581daac98a50c5be92bab462fd154a
 }
 
 .form__row {
   display: flex;
   margin-bottom: 35px;
+
+  @include phones {
+    flex-direction: column;
+  }
 }
 
 .form__block {
@@ -38,6 +53,11 @@
 
   &:first-child {
     margin-right: 20px;
+
+    @include phones {
+      margin-right: 0;
+      margin-bottom: 35px;
+    }
   }
 }
 
@@ -48,6 +68,10 @@
   position: absolute;
   top: 40px;
   left: 0;
+
+  @include phones {
+      display: none;
+    }
 }
 
 .form__input {
@@ -70,12 +94,20 @@
 input::-webkit-input-placeholder {
   color: #414c63;
   font-weight: 700;
+
+  @include phones {
+    text-align: center;
+  }
 }
 
 input:-moz-placeholder {
   color: #414c63;
   font-size: 18px;
   font-weight: 700;
+
+  @include phones {
+    text-align: center;
+  }
 }
 
 input[placeholder]          {text-overflow:ellipsis;}
@@ -118,4 +150,11 @@ input:-ms-input-placeholder {text-overflow:ellipsis;}
   @include tablets {
     margin: 0 auto;
   }
+<<<<<<< HEAD
+=======
+
+  @include phones {
+    width: 300px;
+  }
+>>>>>>> b5e500df0a581daac98a50c5be92bab462fd154a
 }

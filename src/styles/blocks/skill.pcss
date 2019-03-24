@@ -1,4 +1,5 @@
 .skill {
+<<<<<<< HEAD
   max-width: 150px;
   max-height: 150px;
   fill: transparent;
@@ -11,39 +12,32 @@
       stroke-dasharray: 200;
     }
   }
+=======
+  position: relative;
+  width: 150px;
+  height: 150px;
+>>>>>>> b5e500df0a581daac98a50c5be92bab462fd154a
 
-  &:nth-child(2) {
-    .skill__circle-above {
-      stroke-dasharray: 180;
-    }
+  @include tablets {
+    width: 135px;
+    height: 135px;
   }
-
-  &:nth-child(3) {
-    .skill__circle-above {
-      stroke-dasharray: 145;
-    }
-  }
-
-  &:nth-child(4) {
-    .skill__circle-above {
-      stroke-dasharray: 125;
-    }
-  }
-}
-
-.skill__shape {
-    width: 100%;
 }
 
 .skill__circle {
-    fill: transparent;
-}
-
-.skill__circle-under {
-    stroke-width: 8;
+  fill: transparent;
+  &_under {
     stroke: #eaeaea;
+    stroke-width: 5px;
+  }
+  &_above {
+    stroke-width: 12px;
+    stroke-dasharray: 251;
+    stroke-dashoffset: 100;
+  }
 }
 
+<<<<<<< HEAD
 .skill__circle-above {
     stroke-width: 12;
     stroke-dasharray: 286;
@@ -51,10 +45,20 @@
 
 .skill__title {
   display: block;
+=======
+.skill__circle-text {
+>>>>>>> b5e500df0a581daac98a50c5be92bab462fd154a
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 18px;
+  color: rgba($text-color, .5);
+  padding: 14px;
   text-align: center;
-}
 
+  @include phones {
+    font-size: 16px;
+  }
+}

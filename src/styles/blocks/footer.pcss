@@ -7,6 +7,10 @@
 .footer__container {
   display: flex;
   justify-content: space-between;
+
+  @include phones {
+    flex-direction: column;
+  }
 }
 
 .footer__copyright {
@@ -15,6 +19,13 @@
   @include tablets {
     width: 35%;
   }
+<<<<<<< HEAD
+=======
+
+  @include phones {
+    width: 95%;
+  }
+>>>>>>> b5e500df0a581daac98a50c5be92bab462fd154a
 }
 
 .copyright {
@@ -24,11 +35,23 @@
       flex-direction: column;
     }
 
+<<<<<<< HEAD
+=======
+  @include phones {
+      margin-bottom: 20px;
+    }
+
+>>>>>>> b5e500df0a581daac98a50c5be92bab462fd154a
   &__year {
     opacity: 0.1;
     font-size: 48px;
     font-weight: 700;
     margin-right: 50px;
+
+    @include phones {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
   }
 
   &__username {
@@ -55,6 +78,13 @@
   @include tablets {
     width: 65%;
   }
+<<<<<<< HEAD
+=======
+
+  @include phones {
+    width: 95%;
+  }
+>>>>>>> b5e500df0a581daac98a50c5be92bab462fd154a
 }
 
 .footer__data-columns {

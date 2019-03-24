@@ -1,4 +1,4 @@
-.reviews {
+.reviews-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,6 +34,16 @@
   border: 1px solid #515c70;
   border-radius: 50%;
   position: relative;
+  background: transparent;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background: #fff;
+    transition: .3s;
+  }
 }
 
 .reviews__slider-prev {
@@ -58,18 +68,18 @@
   transform: translate(-50%,-50%) rotate(-180deg);
 }
 
-.reviews__slider {
-  display: flex;
+.reviews__content {
+  overflow: hidden;
 }
 
-.reviews__slider-item {
-  width: 30%;
-  margin-right: 70px;
-
-  &:last-child {
-    margin-right: 0;
+.reviews__content-wrapper {
+    display: flex;
+    align-items: flex-start;
+    will-change: transform;
+    transition: transform .3s;
   }
 
+<<<<<<< HEAD
   @include desktop {
     width: 40%;
     margin-right: 30px;
@@ -79,6 +89,12 @@
     width: 45%;
     margin-right: 30px;
   }
+=======
+.reviews__content-item {
+  flex-shrink: 0;
+  padding-right: 30px;
+  width: 50%;
+>>>>>>> b5e500df0a581daac98a50c5be92bab462fd154a
 }
 
 .quote__text {
