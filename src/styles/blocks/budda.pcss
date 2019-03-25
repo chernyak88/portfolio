@@ -1,0 +1,70 @@
+.parallax__budda {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80%;
+
+  @include super-wide {
+    display: none;
+  }
+
+  @include tablets {
+    display: none;
+  }
+}
+
+.parallax__item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  will-change: transform;
+  z-index: -100;
+
+  &:nth-child(1) {
+    display: block;
+    .parallax__image {
+      top: 0;
+    }
+  }
+  
+  &:nth-child(2) {
+    display: block;
+    .parallax__image {
+      bottom: 0;
+    }
+  }
+  &:nth-child(3) {
+    display: block;
+    .parallax__image {
+      left: 70%;
+      top: 20%;
+    }
+  }
+  &:nth-child(4) {
+    display: block;
+    .parallax__image {
+      top: auto;
+      bottom: 10%;
+      height: 50%;
+    }
+  }
+  &:nth-child(5) {
+    display: block;
+    .parallax__image {
+      bottom: 0;
+      right: 0;
+    }
+  }
+  &:nth-child(6) {
+    display: block;
+    .parallax__image {
+      bottom: 0;
+      right: 0;
+    }
+  }
+}
