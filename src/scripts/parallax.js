@@ -16,3 +16,22 @@ window.addEventListener('scroll', e => {
   const wScroll = window.pageYOffset;
   moveLayersDependsOnScroll(wScroll);
 })
+
+const budda = document.querySelector('.parallax__budda');
+const buddaItems = budda.children;
+
+function moveLayersDepends(wScroll) {
+
+  Array.from(buddaItems).forEach(buddaItem => {
+    const divid = buddaItem.dataset.speed;
+    const straf = wScroll * divid / 10;
+
+    buddaItem.style.transform = `translateY(-${straf}%)`;
+  });
+   
+}
+
+window.addEventListener('scroll', e => {
+  const wScroll = window.pageYOffset;
+  moveLayersDepends(wScroll);
+})
