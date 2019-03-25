@@ -27,17 +27,17 @@ html(lang="ru")
               +image('parallax/mountains/6.png', 'parallax__image')
             .parallax__layer(data-speed="0.5")
               +image('parallax/mountains/7.png', 'parallax__image')
-          section.hero
+          section(id="sec1").hero
             .container.hero__container
               header.header
                 .logo ИЧ
                 .header__menu
                   nav.nav
                     ul.nav__list
-                      - var menu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться',];
+                      - var menu = [{name: 'Главная', link:"#sec1"}, {name: 'Обо мне', link:"#sec2"}, {name: 'Навыки', link:"#sec3"}, {name: 'Работы', link:"#sec4"}, {name: 'Отзывы', link:"#sec5"}, {name: 'Связаться', link:"#sec6"}];
                       each item in menu
                         li.nav__item
-                          a(href="").nav__link #{item}
+                          a(href=item.link).nav__link #{item.name}
                 .header__links
                   ul.socials
                     - var socials = ['insta', 'vk', 'github'];
@@ -51,9 +51,9 @@ html(lang="ru")
                   .user__info-name Игорь Черняк
               .hero__bottom-buttons
                 .scroll-down-button 
-                  a(href="").hero__bottom-link Скролл
+                  a(href="#sec2").hero__bottom-link Скролл
                     +icon('scroll', 'hero__bottom-icon')
-          section.about
+          section(id="sec2").about
             .container.about__container
               .about__left
                 .user
@@ -78,7 +78,7 @@ html(lang="ru")
                   p Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
                 .about__ps 
                   p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-        section.fullscreen-section.values
+        section(id="sec3").fullscreen-section.values
           .container.values__container
             .values__title
               h2.section-title.values__title-text.section-title--small Чем я могу быть полезен вам
@@ -87,15 +87,15 @@ html(lang="ru")
             .values__widget
               #skills-component
             .values__widget-tablets
-        section.fullscreen-section.works
+        section(id="sec4").fullscreen-section.works
           .container.works__container
             h2.section-title.works__section-title Мои работы
             .works__content
               #slider-component
         .bottom-section
-          section.reviews-section
+          section(id="sec5").reviews-section
             #reviews-component
-          section.form-section
+          section(id="sec6").form-section
             .section-title.form-section__title Связаться со мной
             form(action="").form
               .form__row
@@ -127,7 +127,7 @@ html(lang="ru")
                     ul.nav__list
                       each item in menu
                         li.nav__item
-                          a(href="").nav__link #{item}
+                          a(href=item.link).nav__link #{item.name}
               .footer__data-columns
                 .footer__data-col
                   article.footer__text Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool

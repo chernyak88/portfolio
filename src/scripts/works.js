@@ -99,6 +99,9 @@ new Vue({
           this.currentIndex--;
           break;
       }
+    },
+    selectWork(id){
+      this.currentIndex = id;
     }
   },
   created() {
