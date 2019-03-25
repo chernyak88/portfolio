@@ -14,6 +14,12 @@
 .reviews__title {
   margin-bottom: 80px;
   display: flex;
+
+  @include phones {
+    margin-bottom: 30px;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .reviews__section-title {
@@ -21,6 +27,11 @@
 
   @include tablets {
     margin-right: 10px;
+  }
+
+  @include phones {
+    margin-right: 0;
+    margin-bottom: 20px;
   }
 }
 
@@ -52,6 +63,9 @@
 
   @include tablets {
     margin-right: 10px;
+  }
+  @include phones {
+    margin-right: 30px;
   }
 }
 
@@ -87,6 +101,7 @@
 
   @include phones {
     width: 100%;
+    padding-right: 0;
   }
 }
 
@@ -96,6 +111,10 @@
   opacity: 0.5;
   font-weight: 700;
   line-height: 1.7em;
+
+  @include phones {
+      min-height: 150px;
+    }
 
   &:before {
     content: url('../images/icons/left-quote.png');
@@ -117,16 +136,34 @@
 
 .user--horizontal {
   display: flex;
+  align-items: center;
 
   .user__avatar {
     margin-right: 25px;
+
+    @include phones {
+      margin: 0;
+      width: 40%;
+    }
   }
+
+  .user__data {
+    @include phones {
+      width: 60%;
+      text-align: center;
+    }
+  }
+  
 }
 
 .user__name {
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 15px;
+
+  @include phones {
+      margin-bottom: 5px;
+    }
 }
 
 .user__occ {

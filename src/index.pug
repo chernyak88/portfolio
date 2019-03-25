@@ -13,19 +13,19 @@ html(lang="ru")
       .maincontent
         .welcome-section
           section.parallax
-            .parallax__layer(data-speed="0.40")
+            .parallax__layer(data-speed="0")
               +image('parallax/mountains/1.jpg', 'parallax__image')
-            .parallax__layer(data-speed="0.25")
+            .parallax__layer(data-speed="0.3")
               +image('parallax/mountains/2.png', 'parallax__image')
-            .parallax__layer(data-speed="0.35")
-              +image('parallax/mountains/3.png', 'parallax__image')
-            .parallax__layer(data-speed="0.38")
-              +image('parallax/mountains/4.png', 'parallax__image')
-            .parallax__layer(data-speed="0.45")
-              +image('parallax/mountains/5.png', 'parallax__image')
-            .parallax__layer(data-speed="0.48")
-              +image('parallax/mountains/6.png', 'parallax__image')
             .parallax__layer(data-speed="0.5")
+              +image('parallax/mountains/3.png', 'parallax__image')
+            .parallax__layer(data-speed="0")
+              +image('parallax/mountains/4.png', 'parallax__image')
+            .parallax__layer(data-speed="0")
+              +image('parallax/mountains/5.png', 'parallax__image')
+            .parallax__layer(data-speed="0")
+              +image('parallax/mountains/6.png', 'parallax__image')
+            .parallax__layer(data-speed="0")
               +image('parallax/mountains/7.png', 'parallax__image')
           section(id="sec1").hero
             .container.hero__container
@@ -51,7 +51,7 @@ html(lang="ru")
                   .user__info-name Игорь Черняк
               .hero__bottom-buttons
                 .scroll-down-button 
-                  a(href="#sec2").hero__bottom-link Скролл
+                  a.hero__bottom-link Скролл
                     +icon('scroll', 'hero__bottom-icon')
           section(id="sec2").about
             .container.about__container
@@ -78,6 +78,11 @@ html(lang="ru")
                   p Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
                 .about__ps 
                   p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+        .triangles.triangles_top
+          svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__shape.triangles__shape_left
+            polygon(points="0,0 0,100 1000,100")
+          svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__shape.triangles__shape_right
+            polygon(points="0,100 1000,100 1000,0")
         section(id="sec3").fullscreen-section.values
           .container.values__container
             .values__title
@@ -92,13 +97,18 @@ html(lang="ru")
             h2.section-title.works__section-title Мои работы
             .works__content
               #slider-component
+        .triangles.triangles_bottom
+          svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__shape.triangles__shape_left
+            polygon(points="0,0 1000,0 1000,100")
+          svg(viewBox="0 0 1000 100" preserveAspectRatio="none").triangles__shape.triangles__shape_right
+            polygon(points="0,0 0,100 1000,0")
         .bottom-section
           section.parallax.parallax__budda
             .parallax__item(data-speed="0")
               +image('parallax/budda/Sky.jpg', 'parallax__image')
             .parallax__item(data-speed="0.25")
               +image('parallax/budda/Mountain.png', 'parallax__image')
-            .parallax__item(data-speed="0.4")
+            .parallax__item(data-speed="0.35")
               +image('parallax/budda/Budda.png', 'parallax__image')
             .parallax__item(data-speed="0")
               +image('parallax/budda/Cloud1.png', 'parallax__image')
