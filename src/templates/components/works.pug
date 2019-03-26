@@ -35,8 +35,9 @@ script(type="text/x-template")#slider-thumbs
     li.works-slider__thumb-item(
       v-for="(work, index) in works" :key="work.id"
       :class="{active: currentWork.id === work.id }"
+      @click.prevent="$emit('select', index)"
     )
-      a(href="#" @click.prevent="$emit('select', index)").works-slider__thumb-link
+      a(href="#").works-slider__thumb-link
         img(:src="work.photo" alt="").works-slider__thumb
 
 script(type="text/x-template")#slider-info

@@ -115,10 +115,22 @@
 }
 
 .works-slider__thumb-item {
+  position: relative;
+  cursor: pointer;
   transition: .2s;
-  &.active,
-  &:hover {
+  &.active {
+    z-index: 50;
     outline: 3px solid #5500f2;
+  }
+  &:hover:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #5500f2;
+    opacity: .5;
   }
 }
 
