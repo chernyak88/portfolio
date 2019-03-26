@@ -40,11 +40,11 @@ html(lang="ru")
                           a(href=item.link).nav__link #{item.name}
                 .header__links
                   ul.socials
-                    - var socials = ['insta', 'vk', 'github'];
+                    - var socials = [{name: 'insta', link: "https://www.instagram.com/igor_chernyak88/"}, {name: 'vk', link: "https://vk.com/id25389922"}, {name: 'github', link: "https://github.com/chernyak88/"}];
                     each item in socials
                       li.socials__item
-                        a(href="").socials__link 
-                          +icon(`${item}`, 'socials__icon')
+                        a(href=item.link target='_blank').socials__link 
+                          +icon(`${item.name}`, 'socials__icon')
               .hero__content
                 .user-info 
                   .user__info-desc Личный сайт веб разработчика
@@ -106,9 +106,9 @@ html(lang="ru")
           section.parallax.parallax__budda
             .parallax__item(data-speed="0")
               +image('parallax/budda/Sky.jpg', 'parallax__image')
-            .parallax__item(data-speed="0.25")
+            .parallax__item(data-speed="0")
               +image('parallax/budda/Mountain.png', 'parallax__image')
-            .parallax__item(data-speed="0.35")
+            .parallax__item(data-speed="0.37")
               +image('parallax/budda/Budda.png', 'parallax__image')
             .parallax__item(data-speed="0")
               +image('parallax/budda/Cloud1.png', 'parallax__image')
@@ -158,14 +158,30 @@ html(lang="ru")
                     ul.socials.socials--rounded
                       each item in socials
                         li.socials__item
-                          a(href="").socials__link 
-                            +icon(`${item}`, 'socials__icon')
+                          a(href=item.link target='_blank').socials__link 
+                            +icon(`${item.name}`, 'socials__icon')
                 .footer__data-col
                   article.footer__text
                     p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
                   .footer__text-author Martin Golding
       .hamburger-menu
         .hamburger-menu__link
+      .popup
+        .popup__overlay
+          .logo.popup__logo ИЧ
+        .popup__menu
+          button.popup__close
+          nav.nav.nav--popup
+            ul.nav__list
+              each item in menu
+                li.nav__item.nav__item--popup
+                  a(href=item.link).nav__link #{item.name}
+          ul.socials.socials--popup
+            each item in socials
+              li.socials__item
+                a(href=item.link target='_blank').socials__link
+                  +icon(`${item.name}`, 'socials__icon')
+
 
     include ./templates/entry.pug
                     
