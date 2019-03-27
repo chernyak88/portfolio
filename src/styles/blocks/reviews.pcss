@@ -1,8 +1,21 @@
+.reviews {
+  padding-right: 25%;
+  
+  @include desktop {
+    padding-right: 10%;
+  }
+
+  @include tablets {
+    padding-right: 0;
+  }
+}
+
 .reviews-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 180px 100px;
+  position: relative;
 
   @include desktop {
     padding: 180px 30px;
@@ -13,6 +26,12 @@
 .reviews__title {
   margin-bottom: 80px;
   display: flex;
+
+  @include phones {
+    margin-bottom: 30px;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .reviews__section-title {
@@ -20,6 +39,11 @@
 
   @include tablets {
     margin-right: 10px;
+  }
+
+  @include phones {
+    margin-right: 0;
+    margin-bottom: 20px;
   }
 }
 
@@ -35,14 +59,20 @@
   border-radius: 50%;
   position: relative;
   background: transparent;
+  transition: .3s;
 
   &:focus {
     outline: none;
   }
 
   &:hover {
-    background: #fff;
+    background: #5500f2;
+    border: 1px solid #fff;
     transition: .3s;
+
+    .reviews__slider-prev-icon, .reviews__slider-next-icon {
+      fill: #fff;
+    }
   }
 }
 
@@ -51,6 +81,9 @@
 
   @include tablets {
     margin-right: 10px;
+  }
+  @include phones {
+    margin-right: 30px;
   }
 }
 
@@ -83,6 +116,11 @@
   flex-shrink: 0;
   padding-right: 30px;
   width: 50%;
+
+  @include phones {
+    width: 100%;
+    padding-right: 0;
+  }
 }
 
 .quote__text {
@@ -91,6 +129,10 @@
   opacity: 0.5;
   font-weight: 700;
   line-height: 1.7em;
+
+  @include phones {
+      min-height: 150px;
+    }
 
   &:before {
     content: url('../images/icons/left-quote.png');
@@ -112,16 +154,34 @@
 
 .user--horizontal {
   display: flex;
+  align-items: center;
 
   .user__avatar {
     margin-right: 25px;
+
+    @include phones {
+      margin: 0;
+      width: 40%;
+    }
   }
+
+  .user__data {
+    @include phones {
+      width: 60%;
+      text-align: center;
+    }
+  }
+  
 }
 
 .user__name {
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 15px;
+
+  @include phones {
+      margin-bottom: 5px;
+    }
 }
 
 .user__occ {

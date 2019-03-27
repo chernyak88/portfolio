@@ -1,6 +1,13 @@
 .about {
   position: relative;
-  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 150px;
+
+  @include phones {
+    padding-bottom: 50px;
+  }
 }
 
 .about__container {
@@ -67,6 +74,10 @@
   border-radius: 50%;
   max-width: 200px;
   max-height: 200px;
+
+  @include phones {
+    height: auto;
+  }
 }
 
 .user__data-cell {

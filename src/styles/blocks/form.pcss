@@ -1,4 +1,5 @@
 .form-section {
+  position: relative;
   padding: 0 100px;
 
   @include tablets {
@@ -48,6 +49,15 @@
   flex: 1;
   position: relative;
 
+  &:hover {
+    .form__icon {
+      fill: #5500f2;
+  }
+    .form__input {
+      border-bottom: 1px solid #5500f2;
+    }
+}
+
   &:first-child {
     margin-right: 20px;
 
@@ -78,6 +88,7 @@
   background-color: rgba(0,0,0,0);
   padding: 15px 0;
   padding-left: 40px;
+  cursor: pointer;
 
   &--full {
     width: 100%;
@@ -143,6 +154,7 @@ input:-ms-input-placeholder {text-overflow:ellipsis;}
   color: #fff;
   text-transform: uppercase;
   cursor: pointer;
+  transition: .5s;
 
   @include tablets {
     margin: 0 auto;
@@ -150,5 +162,10 @@ input:-ms-input-placeholder {text-overflow:ellipsis;}
 
   @include phones {
     width: 300px;
+  }
+
+  &:hover {
+    border-radius: 5px 40px;
+    transition: .5s;
   }
 }

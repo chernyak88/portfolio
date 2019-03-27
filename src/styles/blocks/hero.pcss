@@ -2,6 +2,11 @@
   position: relative;
   height: 100vh;
   min-height: 650px;
+
+  @include phones {
+    height: 60vh;
+    max-height: 100vh;
+  }
 }
 
 .hero__container {
@@ -71,10 +76,6 @@
 .hero__bottom-buttons {
   display: flex;
   justify-content: center;
-
-  @include tablets {
-    display: none;
-  }
 }
 
 .scroll-down-button {
