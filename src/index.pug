@@ -13,20 +13,10 @@ html(lang="ru")
       .maincontent
         .welcome-section
           section.parallax
-            .parallax__layer(data-speed="0")
-              +image('parallax/mountains/1.jpg', 'parallax__image')
-            .parallax__layer(data-speed="0.3")
-              +image('parallax/mountains/2.png', 'parallax__image')
-            .parallax__layer(data-speed="0.5")
-              +image('parallax/mountains/3.png', 'parallax__image')
-            .parallax__layer(data-speed="0")
-              +image('parallax/mountains/4.png', 'parallax__image')
-            .parallax__layer(data-speed="0")
-              +image('parallax/mountains/5.png', 'parallax__image')
-            .parallax__layer(data-speed="0")
-              +image('parallax/mountains/6.png', 'parallax__image')
-            .parallax__layer(data-speed="0")
-              +image('parallax/mountains/7.png', 'parallax__image')
+            - for (var i = 1; i <= 7; i++)
+                .parallax__layer
+                  picture
+                    img(srcset=require(`images/parallax/mountains/${i}.${i === 1 ? 'jpg' : 'png'}`)).parallax__image
           section(id="sec1").hero
             .container.hero__container
               header.header
@@ -105,17 +95,17 @@ html(lang="ru")
         .bottom-section
           section.parallax.parallax__budda
             .parallax__item(data-speed="0")
-              +image('parallax/budda/Sky.jpg', 'parallax__image')
+              +image('parallax/budda/1.jpg', 'parallax__image')
             .parallax__item(data-speed="0")
-              +image('parallax/budda/Mountain.png', 'parallax__image')
+              +image('parallax/budda/2.png', 'parallax__image')
             .parallax__item(data-speed="0.37")
-              +image('parallax/budda/Budda.png', 'parallax__image')
+              +image('parallax/budda/3.png', 'parallax__image')
             .parallax__item(data-speed="0")
-              +image('parallax/budda/Cloud1.png', 'parallax__image')
+              +image('parallax/budda/4.png', 'parallax__image')
             .parallax__item(data-speed="0")
-              +image('parallax/budda/Cloud2.png', 'parallax__image')
+              +image('parallax/budda/5.png', 'parallax__image')
             .parallax__item(data-speed="0")
-              +image('parallax/budda/Cloud3.png', 'parallax__image')
+              +image('parallax/budda/6.png', 'parallax__image')
           section(id="sec5").reviews-section
             #reviews-component
           section(id="sec6").form-section
