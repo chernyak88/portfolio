@@ -21,6 +21,11 @@
   display: flex;
   padding: 40px 25px;
   background-color: #fff;
+
+  @include tablets {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .edit-work__load {
@@ -29,7 +34,20 @@
   margin-right: 30px;
   border: 1px dashed #a1a1a1;
   background-color: #dee4ed;
-  position: relative;  
+  position: relative;
+
+  @include tablets {
+    width: 70%;
+    margin-right: 0;
+    margin-bottom: 20px;
+    background-image: url('../images/admin-works/1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  @include phones {
+    width: 100%;
+  }  
 }
 
 .edit-work__load-desc {
@@ -40,6 +58,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+
+  @include tablets {
+    display: none;
+  }
 }
 
 .edit-work__load-text {
@@ -65,10 +87,31 @@
     color: #383bcf;
     text-transform: none;
   }
+
+  &--tablet {
+    display: none;
+
+    @include tablets {
+      display: block;
+      width: 180px;
+      background: transparent;
+      color: #383bcf;
+      text-transform: none;
+      margin-bottom: 30px;
+    }
+  }
 }
 
 .edit-work__desc {
   width: 50%;
+
+  @include tablets {
+    width: 75%;
+  }
+
+  @include phones {
+    width: 100%;
+  }
 }
 
 .edit-work-form {
@@ -158,6 +201,15 @@
   height: 555px;
   display: flex;
   flex-direction: column;
+
+  @include tablets {
+    width: calc(50% - 20px);
+  }
+
+  @include phones {
+    width: 100%;
+    margin-right: 0;
+  }
 }
 
 .admin-works__item--add {
@@ -254,7 +306,7 @@
 }
 
 .admin-works__item-btn--delete:after {
-  content: url('../images/icons/Cross.png');
+  content: url('../images/icons/cross.png');
   display: inline-block;
   height: 17px;
   width: 17px;

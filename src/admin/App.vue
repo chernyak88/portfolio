@@ -143,6 +143,7 @@
                   .edit-work__load-desc
                     .edit-work__load-text Перетащите или загрузите для загрузки изображения
                     button.edit-work__btn.edit-work__btn--load Загрузить
+                button.edit-work__btn.edit-work__btn--tablet Изменить превью
                 .edit-work__desc
                   form(action="").edit-work-form
                     .edit-work-form__row

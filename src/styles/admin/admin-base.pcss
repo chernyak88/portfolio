@@ -28,6 +28,11 @@
 .container__admin-block-title {
   display: flex;
   flex-direction: row;
+
+  @include phones {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .admin-block {
@@ -77,3 +82,13 @@
     opacity: 1;
   }
 }
+
+input[placeholder]          {text-overflow:ellipsis;}
+input::-moz-placeholder     {text-overflow:ellipsis;} 
+input:-moz-placeholder      {text-overflow:ellipsis;} 
+input:-ms-input-placeholder {text-overflow:ellipsis;}
+
+:focus::-webkit-input-placeholder {color: transparent}
+:focus::-moz-placeholder          {color: transparent}
+:focus:-moz-placeholder           {color: transparent}
+:focus:-ms-input-placeholder      {color: transparent}
