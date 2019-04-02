@@ -37,7 +37,7 @@
               .about-block__content
               .about-block__edit
                 input(type="text" placeholder="Новый навык").admin-input.new-skill-input
-                input(type="number" maxlength="3" placeholder="%").admin-input.percent-input
+                input(type="number" min="0" max="100" placeholder="%").admin-input.percent-input
                 button.admin-add-btn
             li.admin-about__item
               .about-block__title
@@ -82,7 +82,7 @@
                       button.admin-btn.remove__btn
               .about-block__edit
                 input(type="text" placeholder="Новый навык").admin-input.new-skill-input
-                input(type="number" maxlength="3" placeholder="%").admin-input.percent-input
+                input(type="number" min="0" max="100" placeholder="%").admin-input.percent-input
                 button.admin-add-btn
             li.admin-about__item
               .about-block__title
@@ -126,7 +126,7 @@
                       button.admin-btn.remove__btn
               .about-block__edit
                 input(type="text" placeholder="Новый навык").admin-input.new-skill-input
-                input(type="number" maxlength="3" placeholder="%").admin-input.percent-input
+                input(type="number" min="0" max="100" placeholder="%").admin-input.percent-input
                 button.admin-add-btn
       
       .admin-block-title
