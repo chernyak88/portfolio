@@ -1,0 +1,94 @@
+.admin-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.maincontent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.root-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tooltips-container {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 110%);
+  visibility: hidden;
+  transition: .3s;
+}
+
+.container__admin-block-title {
+  display: flex;
+  flex-direction: row;
+
+  @include phones {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.admin-block {
+  background: url('../images/bg/admin_bg.jpg') center center no-repeat;
+}
+
+.admin-block-title {
+  display: flex;
+  font-size: 21px;
+  font-weight: 700;
+  padding: 45px 0;
+}
+
+.admin-btn {
+  width: 16px;
+  height: 16px;
+  background: transparent;
+}
+
+.apply__btn {
+  background: url('../images/icons/tick.png') center center no-repeat;
+  margin-right: 16px;
+
+  &--nomargin {
+    margin-right: 0;
+  }
+}
+
+.close__btn {
+  background: url('../images/icons/cross.png') center center no-repeat;
+}
+
+.edit__btn {
+  background: url('../images/icons/pencil.png') center center no-repeat;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.remove__btn {
+  background: url('../images/icons/trash.png') center center no-repeat;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+input[placeholder]          {text-overflow:ellipsis;}
+input::-moz-placeholder     {text-overflow:ellipsis;} 
+input:-moz-placeholder      {text-overflow:ellipsis;} 
+input:-ms-input-placeholder {text-overflow:ellipsis;}
+
+:focus::-webkit-input-placeholder {color: transparent}
+:focus::-moz-placeholder          {color: transparent}
+:focus:-moz-placeholder           {color: transparent}
+:focus:-ms-input-placeholder      {color: transparent}

@@ -110,20 +110,22 @@ html(lang="ru")
             #reviews-component
           section(id="sec6").form-section
             .section-title.form-section__title Связаться со мной
-            form(action="").form
+            form.form(method="POST")
               .form__row
-                label.form__block
+                label.form__block.form__block--error(for="")
                   .form__text Введите ваше имя
-                  input(type="text", placeholder="Ковальчук Дмитрий").form__input
+                  input(type="text" name="name" placeholder="Ковальчук Дмитрий" required).form__input
+                  .error.error__name
                   +icon('user', 'form__icon')
-                label.form__block
+                label.form__block.form__block--error(for="")
                   .form__text Введите ваш email
-                  input(type="text", placeholder="loftschool@study.com").form__input
-                  +icon('envelope', 'form__icon')
+                  input(type="email" name="email" placeholder="loftschool@study.com" required).form__input
+                  .error.error__mail
+                  +icon('envelope', 'form__icon') 
               .form__row
                 label.form__block
                   .form__text Сообщение к письму
-                  input(type="text", placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса").form__input.form__input--full
+                  input(type="text" name="comment" placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса").form__input.form__input--full
                   +icon('message', 'form__icon')
               input(type="submit", value="Отправить").form__button
         footer.footer
@@ -171,6 +173,11 @@ html(lang="ru")
               li.socials__item
                 a(href=item.link target='_blank').socials__link
                   +icon(`${item.name}`, 'socials__icon')
+      .popup__order
+        .overlay-order
+          .popup-container-order
+            .popup__content-order text
+            button.btn-modal Закрыть
 
 
     include ./templates/entry.pug

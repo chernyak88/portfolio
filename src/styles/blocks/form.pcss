@@ -49,6 +49,14 @@
   flex: 1;
   position: relative;
 
+  &--error {
+    &.active {
+      .error {
+        display: block;
+      }
+    }
+  }
+
   &:hover {
     .form__icon {
       fill: #5500f2;
@@ -155,6 +163,7 @@ input:-ms-input-placeholder {text-overflow:ellipsis;}
   text-transform: uppercase;
   cursor: pointer;
   transition: .5s;
+  outline: none;
 
   @include tablets {
     margin: 0 auto;
