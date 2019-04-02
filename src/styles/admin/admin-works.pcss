@@ -295,6 +295,14 @@
   &:hover {
     opacity: 1;
   }
+
+  @include bp-870 {
+    font-size: 13px;
+  }
+
+  @include phones {
+    font-size: 14px;
+  }
 }
 
 .admin-works__item-btn--edit:after {
@@ -303,6 +311,11 @@
   height: 17px;
   width: 17px;
   margin-left: 10px;
+  vertical-align: bottom;
+
+  @include bp-870 {
+    margin-left: 3px;
+  }
 }
 
 .admin-works__item-btn--delete:after {
@@ -311,4 +324,8 @@
   height: 17px;
   width: 17px;
   margin-left: 10px;
+
+  @include bp-870 {
+    margin-left: 3px;
+  }
 }

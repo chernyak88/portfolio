@@ -276,6 +276,18 @@
   &:hover {
     opacity: 1;
   }
+
+  @include bp-960 {
+    font-size: 13px;
+  }
+
+  @include bp-870 {
+    font-size: 11px;
+  }
+
+  @include phones {
+    font-size: 14px;
+  }
 }
 
 .admin-review__item-btn--edit:after {
@@ -284,6 +296,15 @@
   height: 17px;
   width: 17px;
   margin-left: 10px;
+  vertical-align: bottom;
+
+  @include bp-870 {
+    margin-left: 0;
+  }
+
+  @include phones {
+    margin-left: 3px;
+  }
 }
 
 .admin-review__item-btn--delete:after {
@@ -292,4 +313,12 @@
   height: 17px;
   width: 17px;
   margin-left: 10px;
+
+  @include bp-870 {
+    margin-left: 0;
+  }
+
+  @include phones {
+    margin-left: 3px;
+  }
 }
