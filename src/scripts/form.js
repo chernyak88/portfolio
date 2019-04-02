@@ -95,7 +95,7 @@ function validateField(field) {
     field.nextElementSibling.textContent = field.validationMessage;
     return false;
   } else {
-    field.nextElementSibling.textContent = "";
+    field.nextElementSibling.textContent = "Поля Имя и email должны быть заполнены";
     return true;
   }
 }
