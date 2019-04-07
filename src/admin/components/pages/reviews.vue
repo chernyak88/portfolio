@@ -34,7 +34,7 @@
           li.admin-review__item
             .admin-review__item-author
               .admin-review__item-author-img
-                img(src="../images/content/sabancev-small.png").admin-review__item-pic
+                img(src="../../../images/content/sabancev-small.png").admin-review__item-pic
               .admin-review__item-author-desc
                 .admin-review__item-author-name Владимир Сабанцев
                 .admin-review__item-author-job Преподаватель
@@ -45,7 +45,7 @@
           li.admin-review__item
             .admin-review__item-author
               .admin-review__item-author-img
-                img(src="../images/content/kovalchuk-small.png").admin-review__item-pic
+                img(src="../../../images/content/kovalchuk-small.png").admin-review__item-pic
               .admin-review__item-author-desc
                 .admin-review__item-author-name Ковальчук Дмитрий
                 .admin-review__item-author-job Основатель Loftschool
@@ -56,7 +56,7 @@
           li.admin-review__item
             .admin-review__item-author
               .admin-review__item-author-img
-                img(src="../images/content/sabancev-small.png").admin-review__item-pic
+                img(src="../../../images/content/sabancev-small.png").admin-review__item-pic
               .admin-review__item-author-desc
                 .admin-review__item-author-name Владимир Сабанцев
                 .admin-review__item-author-job Преподаватель
@@ -67,7 +67,7 @@
           li.admin-review__item
             .admin-review__item-author
               .admin-review__item-author-img
-                img(src="../images/content/kovalchuk-small.png").admin-review__item-pic
+                img(src="../../../images/content/kovalchuk-small.png").admin-review__item-pic
               .admin-review__item-author-desc
                 .admin-review__item-author-name Ковальчук Дмитрий
                 .admin-review__item-author-job Основатель Loftschool
@@ -78,7 +78,7 @@
 </template>
 
 <style lang="postcss" scoped>
-@import "../../styles/mixins.pcss";
+@import "../../../styles/mixins.pcss";
 
 .admin-reviews__container {
   display: flex;
@@ -145,7 +145,7 @@
   }
 
   &::after {
-    content: url('../images/icons/man-user.png');
+    content: url('../../../images/icons/man-user.png');
     position: absolute;
     top: 50%;
     left: 50%;
@@ -373,7 +373,7 @@
 }
 
 .admin-review__item-btn--edit:after {
-  content: url('../images/icons/pencil-edit-button.png');
+  content: url('../../../images/icons/pencil-edit-button.png');
   display: inline-block;
   height: 17px;
   width: 17px;
@@ -390,7 +390,7 @@
 }
 
 .admin-review__item-btn--delete:after {
-  content: url('../images/icons/cross.png');
+  content: url('../../../images/icons/cross.png');
   display: inline-block;
   height: 17px;
   width: 17px;

@@ -3,6 +3,7 @@
     .root-container
       app-header 
       tabs
+      router-view
 </template>
 
 <script>

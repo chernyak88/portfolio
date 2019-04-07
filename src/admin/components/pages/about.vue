@@ -111,7 +111,7 @@
 </template>
 
 <style lang="postcss" scoped>
-@import "../../styles/mixins.pcss";
+@import "../../../styles/mixins.pcss";
 
 .admin-block-name--about {
   margin-right: 50px;
@@ -278,7 +278,7 @@
 }
 
 .admin-block {
-  background: url('../images/bg/admin_bg.jpg') center center no-repeat;
+  background: url('../../../images/bg/admin_bg.jpg') center center no-repeat;
 }
 
 .admin-block-title {
@@ -295,7 +295,7 @@
 }
 
 .apply__btn {
-  background: url('../images/icons/tick.png') center center no-repeat;
+  background: url('../../../images/icons/tick.png') center center no-repeat;
   margin-right: 16px;
 
   &--nomargin {
@@ -304,11 +304,11 @@
 }
 
 .close__btn {
-  background: url('../images/icons/cross.png') center center no-repeat;
+  background: url('../../../images/icons/cross.png') center center no-repeat;
 }
 
 .edit__btn {
-  background: url('../images/icons/pencil.png') center center no-repeat;
+  background: url('../../../images/icons/pencil.png') center center no-repeat;
   opacity: 0.5;
 
   &:hover {
@@ -317,7 +317,7 @@
 }
 
 .remove__btn {
-  background: url('../images/icons/trash.png') center center no-repeat;
+  background: url('../../../images/icons/trash.png') center center no-repeat;
   opacity: 0.5;
 
   &:hover {

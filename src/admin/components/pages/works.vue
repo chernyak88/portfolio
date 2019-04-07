@@ -44,7 +44,7 @@
             .admin-works__item--add__btn
           li.admin-works__item
             .admin-works__item-img
-              img(src="../images/admin-works/1.jpg").admin-works__item-pic
+              img(src="../../../images/admin-works/1.jpg").admin-works__item-pic
             .admin-works__item-content
               .admin-works__item-title Сайт школы образования
               .admin-works__item-desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
@@ -55,7 +55,7 @@
               button.admin-works__item-btn.admin-works__item-btn--delete Удалить
           li.admin-works__item
             .admin-works__item-img
-              img(src="../images/admin-works/2.jpg").admin-works__item-pic
+              img(src="../../../images/admin-works/2.jpg").admin-works__item-pic
             .admin-works__item-content
               .admin-works__item-title Сайт школы образования
               .admin-works__item-desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
@@ -66,7 +66,7 @@
               button.admin-works__item-btn.admin-works__item-btn--delete Удалить
           li.admin-works__item
             .admin-works__item-img
-              img(src="../images/admin-works/3.jpg").admin-works__item-pic
+              img(src="../../../images/admin-works/3.jpg").admin-works__item-pic
             .admin-works__item-content
               .admin-works__item-title Сайт школы образования
               .admin-works__item-desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
@@ -77,7 +77,7 @@
               button.admin-works__item-btn.admin-works__item-btn--delete Удалить
           li.admin-works__item
             .admin-works__item-img
-              img(src="../images/admin-works/4.jpg").admin-works__item-pic
+              img(src="../../../images/admin-works/4.jpg").admin-works__item-pic
             .admin-works__item-content
               .admin-works__item-title Сайт школы образования
               .admin-works__item-desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
@@ -89,7 +89,7 @@
 </template>
 
 <style lang="postcss" scoped>
-@import "../../styles/mixins.pcss";
+@import "../../../styles/mixins.pcss";
 
 .admin-works__container {
   display: flex;
@@ -133,7 +133,7 @@
     width: 70%;
     margin-right: 0;
     margin-bottom: 20px;
-    background-image: url('../images/admin-works/1.jpg');
+    background-image: url('../../../images/admin-works/1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -275,7 +275,7 @@
   }
 
   &:after {
-    content: url('../images/icons/cancel.png');
+    content: url('../../../images/icons/cancel.png');
     width: 8px;
     height: 8px;
     margin-left: 8px;
@@ -399,7 +399,7 @@
 }
 
 .admin-works__item-btn--edit:after {
-  content: url('../images/icons/pencil-edit-button.png');
+  content: url('../../../images/icons/pencil-edit-button.png');
   display: inline-block;
   height: 17px;
   width: 17px;
@@ -412,7 +412,7 @@
 }
 
 .admin-works__item-btn--delete:after {
-  content: url('../images/icons/cross.png');
+  content: url('../../../images/icons/cross.png');
   display: inline-block;
   height: 17px;
   width: 17px;

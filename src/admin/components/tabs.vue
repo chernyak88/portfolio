@@ -4,10 +4,10 @@
       .admin-header__menu
         nav.admin__nav
           ul.nav__list
-            - var menu = [{name: 'Обо мне'}, {name: 'Работы'}, {name: 'Отзывы'}];
+            - var menu = [{name: 'Обо мне', link: 'http://localhost:8080/admin#/'}, {name: 'Работы', link: 'http://localhost:8080/admin#/works'}, {name: 'Отзывы', link: 'http://localhost:8080/admin#/reviews'}];
             each item in menu
               li.nav__item
-                a.nav__link #{item.name}
+                a(href=item.link).nav__link #{item.name}
 </template>
 
 <style lang="postcss" scoped>
