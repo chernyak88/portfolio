@@ -48,6 +48,8 @@
     "last 2 versions"
   ],
   "dependencies": {
+    "@babel/polyfill": "^7.4.3",
+    "axios": "^0.18.0",
     "normalize.css": "^8.0.1",
     "promptly": "^3.0.3",
     "pug": "^2.0.3",

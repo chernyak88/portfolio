@@ -3,112 +3,33 @@
     .admin-block-title
       .container.container__admin-block-title
         .admin-block-name.admin-block-name--about Блок «Обо мне»
-        button.admin-about-btn Добавить группу 
+        button.admin-about-btn(
+          @click="showAddingForm = true"
+          v-if="showAddingForm === false"
+        ) Добавить группу 
     .admin-block.admin-about
       .container
         ul.admin-about__list
-          li.admin-about__item
-            .about-block__title
-              .add-group
-                input(type="text" placeholder="Название новой группы").admin-input
-              .add-buttons
-                button.admin-btn.apply__btn
-                button.admin-btn.close__btn
-            .about-block__content
-            .about-block__edit
-              input(type="text" placeholder="Новый навык").admin-input.new-skill-input
-              input(type="number" min="0" max="100" placeholder="%").admin-input.percent-input
-              button.admin-add-btn
-          li.admin-about__item
-            .about-block__title
-              .add-group
-                input(type="text" value="Workflow").admin-input
-              .add-buttons
-                button.admin-btn.apply__btn
-                button.admin-btn.close__btn
-            .about-block__content
-              table.about-block__table
-                tr.about-block-row
-                  td.about-block-cell Git
-                  td.about-block-cell 100
-                  td.about-block-cell %
-                  td.about-block-cell
-                    button.admin-btn.edit__btn
-                  td.about-block-cell
-                    button.admin-btn.remove__btn
-                tr.about-block-row
-                  td.about-block-cell Terminal
-                  td.about-block-cell 90
-                  td.about-block-cell %
-                  td.about-block-cell
-                    button.admin-btn.edit__btn
-                  td.about-block-cell
-                    button.admin-btn.remove__btn
-                tr.about-block-row
-                  td.about-block-cell Gulp
-                  td.about-block-cell 80
-                  td.about-block-cell %
-                  td.about-block-cell
-                    button.admin-btn.edit__btn
-                  td.about-block-cell
-                    button.admin-btn.remove__btn
-                tr.about-block-row
-                  td.about-block-cell Webpack
-                  td.about-block-cell 85
-                  td.about-block-cell %
-                  td.about-block-cell
-                    button.admin-btn.edit__btn
-                  td.about-block-cell
-                    button.admin-btn.remove__btn
-            .about-block__edit
-              input(type="text" placeholder="Новый навык").admin-input.new-skill-input
-              input(type="number" min="0" max="100" placeholder="%").admin-input.percent-input
-              button.admin-add-btn
-          li.admin-about__item
-            .about-block__title
-              .add-group
-                .add-group__title Frontend
-              .add-buttons
-                button.admin-btn.edit__btn
-            .about-block__content
-              table.about-block__table
-                tr.about-block-row
-                  td.about-block-cell Html5
-                  td.about-block-cell 100
-                  td.about-block-cell %
-                  td.about-block-cell
-                    button.admin-btn.edit__btn
-                  td.about-block-cell
-                    button.admin-btn.remove__btn
-                tr.about-block-row
-                  td.about-block-cell CSS3
-                  td.about-block-cell 90
-                  td.about-block-cell %
-                  td.about-block-cell
-                    button.admin-btn.apply__btn.apply__btn--nomargin
-                  td.about-block-cell
-                    button.admin-btn.close__btn
-                tr.about-block-row
-                  td.about-block-cell JavaScript
-                  td.about-block-cell 80
-                  td.about-block-cell %
-                  td.about-block-cell
-                    button.admin-btn.edit__btn
-                  td.about-block-cell
-                    button.admin-btn.remove__btn
-                tr.about-block-row
-                  td.about-block-cell Jquery и Vue.js
-                  td.about-block-cell 85
-                  td.about-block-cell %
-                  td.about-block-cell
-                    button.admin-btn.edit__btn
-                  td.about-block-cell
-                    button.admin-btn.remove__btn
-            .about-block__edit
-              input(type="text" placeholder="Новый навык").admin-input.new-skill-input
-              input(type="number" min="0" max="100" placeholder="%").admin-input.percent-input
-              button.admin-add-btn
+          li.admin-about__item(v-if="showAddingForm")
+            skills-add()
+          li.admin-about__item(v-if="false")
+            skills-group()
 </template>
+
+<script>
+import { mapActions } from "vuex";
+export default {
+  components: {
+    skillsAdd: () => import('../skills-add.vue'),
+    skillsGroup: () => import('../skills-group.vue')
+  },
+  data() {
+    return {
+      showAddingForm: false
+    }
+  }
+};
+</script>
 
 <style lang="postcss" scoped>
 @import "../../../styles/mixins.pcss";
