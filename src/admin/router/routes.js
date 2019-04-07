@@ -19,5 +19,12 @@ export default [
     meta: {
       title: "Блок «Отзывы»"
     }
+  },
+  {
+    path: "/login",
+    component: () => import("../components/pages/login.vue"),
+    meta: {
+      title: "Авторизация"
+    }
   }
 ];

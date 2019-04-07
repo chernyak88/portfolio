@@ -10,6 +10,7 @@
 import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   components: {
+    login: () => import("./components/pages/login"),
     appHeader: () => import("./components/header"),
     tabs: () => import("./components/tabs")
   }
