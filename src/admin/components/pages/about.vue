@@ -18,6 +18,7 @@
           )
             skills-group(
               :category="category"
+              :skills="filterSkillsByCategoryId(category.id)"
             )
 </template>
 
@@ -31,6 +32,9 @@ export default {
   computed: {
     ...mapState('categories', {
       categories: state => state.categories
+    }),
+    ...mapState('skills', {
+      skills: state => state.skills
     })
   },
   data() {
@@ -39,13 +43,23 @@ export default {
     }
   },
   methods: {
-    ...mapActions('categories', ['fetchCategories'])
+    ...mapActions('categories', ['fetchCategories']),
+    ...mapActions('skills', ['fetchSkills']),
+    filterSkillsByCategoryId(categoryId) {
+      return this.skills.filter(skill => skill.category === categoryId);
+    }
   },
-  created() {
+  async created() {
     try {
-      this.fetchCategories();
+      await this.fetchCategories();
     } catch (error) {
       alert('Произошла ошибка при загрузке категории')
+    }
+
+    try {
+      await this.fetchSkills();
+    } catch (error) {
+      alert('Произошла ошибка при загрузке skill')
     }
   }
 };

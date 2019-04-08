@@ -8,48 +8,45 @@
         button.admin-btn.close__btn
     .about-block__content
       table.about-block__table
-        tr.about-block-row
-          td.about-block-cell Git
-          td.about-block-cell 100
-          td.about-block-cell %
-          td.about-block-cell
-            button.admin-btn.edit__btn
-          td.about-block-cell
-            button.admin-btn.remove__btn
-        tr.about-block-row
-          td.about-block-cell Terminal
-          td.about-block-cell 90
-          td.about-block-cell %
-          td.about-block-cell
-            button.admin-btn.edit__btn
-          td.about-block-cell
-            button.admin-btn.remove__btn
-        tr.about-block-row
-          td.about-block-cell Gulp
-          td.about-block-cell 80
-          td.about-block-cell %
-          td.about-block-cell
-            button.admin-btn.edit__btn
-          td.about-block-cell
-            button.admin-btn.remove__btn
-        tr.about-block-row
-          td.about-block-cell Webpack
-          td.about-block-cell 85
-          td.about-block-cell %
-          td.about-block-cell
-            button.admin-btn.edit__btn
-          td.about-block-cell
-            button.admin-btn.remove__btn
+        skills-item(
+          v-for="skill in skills"
+          :key="skill.id"
+          :skill="skill"
+        )
     .about-block__edit
-      input(type="text" placeholder="Новый навык").admin-input.new-skill-input
-      input(type="number" min="0" max="100" placeholder="%").admin-input.percent-input
-      button.admin-add-btn
+      input(type="text" v-model="skill.title" placeholder="Новый навык").admin-input.new-skill-input
+      input(type="number" v-model="skill.percent" min="0" max="100" placeholder="%").admin-input.percent-input
+      button(type="button" @click="addNewSkill").admin-add-btn
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   props: {
-    category: Object
+    category: Object,
+    skills: Array,
+  },
+  data() {
+    return {
+      skill: {
+        category: this.category.id,
+        title: "",
+        percent: ""
+      }
+    }
+  },
+  components: {
+    skillsItem: () => import('./skills-item')
+  },
+  methods: {
+    ...mapActions('skills', ['addSkill']),
+    async addNewSkill() {
+      try {
+        await this.addSkill(this.skill)
+      } catch (error) {
+        alert('Произошла ошибка при добавлении skill')
+      }
+    }
   }
 }
 
