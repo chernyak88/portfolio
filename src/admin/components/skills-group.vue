@@ -2,7 +2,7 @@
   .skill-container
     .about-block__title
       .add-group
-        input(type="text" value="Workflow").admin-input
+        h2 {{category.category}}
       .add-buttons
         button.admin-btn.apply__btn
         button.admin-btn.close__btn
@@ -45,3 +45,12 @@
       input(type="number" min="0" max="100" placeholder="%").admin-input.percent-input
       button.admin-add-btn
 </template>
+
+<script>
+export default {
+  props: {
+    category: Object
+  }
+}
+
+</script>

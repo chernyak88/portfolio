@@ -12,20 +12,40 @@
         ul.admin-about__list
           li.admin-about__item(v-if="showAddingForm")
             skills-add()
-          li.admin-about__item(v-if="false")
-            skills-group()
+          li.admin-about__item(
+            v-for="category in categories"
+            :key="category.id"
+          )
+            skills-group(
+              :category="category"
+            )
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 export default {
   components: {
     skillsAdd: () => import('../skills-add.vue'),
     skillsGroup: () => import('../skills-group.vue')
   },
+  computed: {
+    ...mapState('categories', {
+      categories: state => state.categories
+    })
+  },
   data() {
     return {
       showAddingForm: false
+    }
+  },
+  methods: {
+    ...mapActions('categories', ['fetchCategories'])
+  },
+  created() {
+    try {
+      this.fetchCategories();
+    } catch (error) {
+      alert('Произошла ошибка при загрузке категории')
     }
   }
 };
