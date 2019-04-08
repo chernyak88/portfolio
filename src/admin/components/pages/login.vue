@@ -22,15 +22,24 @@ export default {
   data() {
     return {
       user: {
-        name: "admin",
-        password: "admin"
+        name: "chernyak032019",
+        password: "chernyak"
       }
     }
   },
   methods: {
     async login() {
-      const response = await $axios.post('/login', this.user);
-      console.log(response);
+      try {
+        const { 
+        data: { token } 
+      } = await $axios.post('/login', this.user);
+
+      localStorage.setItem('token', token);
+      $axios.defaults.headers['Authorization'] = `Bearer ${token}`;
+      this.$router.replace('/');
+      } catch (error) {
+        alert(error.message)
+      }    
     }
   }
 };
