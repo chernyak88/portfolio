@@ -1,20 +1,40 @@
 <template lang="pug">
   .login
     .login__content
-      form.login__form
+      form.login__form(@submit.prevent="login")
         .login__form-title Авторизация
         .login__row
           .login__text Логин
-          input(type="text" name="login" required).login__input
+          input(type="text" name="login" v-model="user.name" required).login__input
           img(src="../../../images/icons/login-user.png").form__icon
         .login__row
           .login__text Пароль
-          input(type="password" name="password" required).login__input
+          input(type="password" name="password" v-model="user.password" required).login__input
           img(src="../../../images/icons/key.png").form__icon
         .login__btn
           input(type="submit", value="Отправить").login__button
         button.login__close
 </template>
+
+<script>
+import $axios from "@/requests";
+export default {
+  data() {
+    return {
+      user: {
+        name: "admin",
+        password: "admin"
+      }
+    }
+  },
+  methods: {
+    async login() {
+      const response = await $axios.post('/login', this.user);
+      console.log(response);
+    }
+  }
+};
+</script>
 
 <style lang="postcss" scoped>
 @import "../../../styles/mixins.pcss";
@@ -130,6 +150,7 @@
   position: absolute;
   width: 20px;
   height: 20px;
+  background: #fff;
   background-image: url('../../../images/icons/cancel-login.png');
   background-repeat: no-repeat;
   background-position: center;
