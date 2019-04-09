@@ -24,7 +24,7 @@ export default [
     path: "/login",
     component: () => import("../components/pages/login.vue"),
     meta: {
-      title: "Авторизация"
+      public: true
     }
   }
 ];

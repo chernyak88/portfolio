@@ -8,9 +8,16 @@
         .admin-edit-review
           .edit-review__title Новый отзыв
           .edit-review__page
-            .edit-review__load
+            label.edit-review__load
+              input(
+                type="file"
+                @change="appendFileAndRenderPhoto"
+                ).edit-review__load-input
               .edit-review__load-desc
-                .edit-review__load-photo
+                .edit-review__load-photo(
+                  :class="{'filled' : this.rendedPhotoUrl.length}"
+                  :style="{'backgroundImage' : `url(${this.rendedPhotoUrl})`}"
+                )
                 button.edit-review__btn.edit-review__btn--load Добавить фото
             .edit-review__desc
               form(action="").edit-review-form
@@ -77,6 +84,38 @@
               button.admin-review__item-btn.admin-review__item-btn--delete Удалить
 </template>
 
+<script>
+import { mapState, mapActions } from "vuex";
+
+export default {
+  data() {
+    return {
+      rendedPhotoUrl: "",
+      review: {
+        photo: ""
+      }
+    }
+  },
+  methods: {
+    appendFileAndRenderPhoto(e) {
+      const file = e.target.files[0];
+      this.review.photo = file;
+
+      const reader = new FileReader();
+
+      try {
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          this.rendedPhotoUrl = reader.result
+        }
+      } catch (error) {
+        alert('sh*t happens :(')
+      }
+    }
+  }
+}
+</script>
+
 <style lang="postcss" scoped>
 @import "../../../styles/mixins.pcss";
 
@@ -113,6 +152,7 @@
 .edit-review__load {
   width: calc(25% - 20px);
   margin-right: 20px;
+  cursor: pointer;
 
   @include tablets {
     width: calc(20% - 20px);
@@ -123,6 +163,10 @@
     margin-right: 0;
     margin-bottom: 20px;
   } 
+}
+
+.edit-review__load-input{
+  display: none;
 }
 
 .edit-review__load-desc {
@@ -138,6 +182,13 @@
   border-radius: 50%;
   position: relative;
   margin-bottom: 20px;
+
+  &.filled {
+    background: center center no-repeat / cover;
+    &:after {
+      display: none;
+    }
+  }
 
   @include tablets {
     width: 150px;
