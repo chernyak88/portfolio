@@ -5,88 +5,32 @@
         .admin-block-name Блок «Работы»
     .admin-block.admin-works
       .container.admin-works__container
-        .admin-edit-work
-          .edit-work__title Редактирование работы
-          .edit-work__page
-            .edit-work__load
-              .edit-work__load-desc
-                .edit-work__load-text Перетащите или загрузите для загрузки изображения
-                button.edit-work__btn.edit-work__btn--load Загрузить
-            button.edit-work__btn.edit-work__btn--tablet Изменить превью
-            .edit-work__desc
-              form(action="").edit-work-form
-                .edit-work-form__row
-                  label.edit-work-form__block
-                    .edit-work-form__text Название
-                    input(type="text", value="Дизайн сайта для авто салона Porsche").edit-work-form__input
-                .edit-work-form__row
-                  label.edit-work-form__block
-                    .edit-work-form__text Ссылка
-                    input(type="text", value="https://www.porsche-pulkovo.ru").edit-work-form__input
-                .edit-work-form__row
-                  label.edit-work-form__block
-                    .edit-work-form__text.edit-work-form__text--margin Описание
-                    textarea(placeholder="Порше Центр Пулково - является официальным дилером марки Порше в Санкт-Петербурге и предоставляет полный цикл услуг по продаже и сервисному обслуживанию автомобилей").edit-work-form__textarea
-                .edit-work-form__row
-                  label.edit-work-form__block
-                    .edit-work-form__text Добавление тэга
-                    input(type="text", value="Jquery, Vue.js, HTML5").edit-work-form__input
-                .edit-work-form__row
-                  ul.edit-work-form__list
-                    li.edit-work-form__item HTML
-                    li.edit-work-form__item CSS
-                    li.edit-work-form__item Javascript
-                .edit-work-form__row.edit-work-form__row--btns
-                  button.edit-work__btn.edit-work__btn--cancel Отмена
-                  button.edit-work__btn Сохранить
+        works-add(v-if="showAddingForm")
         ul.admin-works
-          li.admin-works__item.admin-works__item--add
+          li.admin-works__item.admin-works__item--add(
+            @click="showAddingForm = true"
+            v-if="showAddingForm === false"
+            )
             .admin-works__item--add__btn
-          li.admin-works__item
-            .admin-works__item-img
-              img(src="../../../images/admin-works/1.jpg").admin-works__item-pic
-            .admin-works__item-content
-              .admin-works__item-title Сайт школы образования
-              .admin-works__item-desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              .admin-works__item-link
-                a(href="http://loftschool.ru" target="_blank").works__item-link http://loftschool.ru
-            .admin-works__item-btns
-              button.admin-works__item-btn.admin-works__item-btn--edit Править
-              button.admin-works__item-btn.admin-works__item-btn--delete Удалить
-          li.admin-works__item
-            .admin-works__item-img
-              img(src="../../../images/admin-works/2.jpg").admin-works__item-pic
-            .admin-works__item-content
-              .admin-works__item-title Сайт школы образования
-              .admin-works__item-desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              .admin-works__item-link
-                a(href="http://loftschool.ru" target="_blank").works__item-link http://loftschool.ru
-            .admin-works__item-btns
-              button.admin-works__item-btn.admin-works__item-btn--edit Править
-              button.admin-works__item-btn.admin-works__item-btn--delete Удалить
-          li.admin-works__item
-            .admin-works__item-img
-              img(src="../../../images/admin-works/3.jpg").admin-works__item-pic
-            .admin-works__item-content
-              .admin-works__item-title Сайт школы образования
-              .admin-works__item-desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              .admin-works__item-link
-                a(href="http://loftschool.ru" target="_blank").works__item-link http://loftschool.ru
-            .admin-works__item-btns
-              button.admin-works__item-btn.admin-works__item-btn--edit Править
-              button.admin-works__item-btn.admin-works__item-btn--delete Удалить
-          li.admin-works__item
-            .admin-works__item-img
-              img(src="../../../images/admin-works/4.jpg").admin-works__item-pic
-            .admin-works__item-content
-              .admin-works__item-title Сайт школы образования
-              .admin-works__item-desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              .admin-works__item-link
-                a(href="http://loftschool.ru" target="_blank").works__item-link http://loftschool.ru
-            .admin-works__item-btns
-              button.admin-works__item-btn.admin-works__item-btn--edit Править
-              button.admin-works__item-btn.admin-works__item-btn--delete Удалить
+          li(v-if="false").admin-works__item
+            works-group()
 </template>
+
+<script>
+import { mapState, mapActions } from "vuex";
+
+export default {
+  components: {
+    worksAdd: () => import('../works-add.vue'),
+    worksGroup: () => import('../works-group.vue')
+  },
+  data() {
+    return {
+      showAddingForm: false
+    }
+  }
+}
+</script>
 
 <style lang="postcss" scoped>
 @import "../../../styles/mixins.pcss";
@@ -128,6 +72,7 @@
   border: 1px dashed #a1a1a1;
   background-color: #dee4ed;
   position: relative;
+  cursor: pointer;
 
   @include tablets {
     width: 70%;
@@ -311,6 +256,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .admin-works__item--add__btn {

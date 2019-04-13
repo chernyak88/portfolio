@@ -5,91 +5,37 @@
         .admin-block-name Блок «Отзывы»
     .admin-block.admin-reviews
       .container.admin-reviews__container
-        .admin-edit-review
-          .edit-review__title Новый отзыв
-          .edit-review__page
-            label.edit-review__load
-              input(
-                type="file"
-                @change="appendFileAndRenderPhoto"
-                ).edit-review__load-input
-              .edit-review__load-desc
-                .edit-review__load-photo(
-                  :class="{'filled' : this.rendedPhotoUrl.length}"
-                  :style="{'backgroundImage' : `url(${this.rendedPhotoUrl})`}"
-                )
-                button.edit-review__btn.edit-review__btn--load Добавить фото
-            .edit-review__desc
-              form(action="").edit-review-form
-                .edit-review-form__row
-                  label.edit-review-form__block
-                    .edit-review-form__text Имя автора
-                    input(type="text", value="Ковальчук Дмитрий").edit-review-form__input
-                  label.edit-review-form__block
-                    .edit-review-form__text Титул автора
-                    input(type="text", value="Основатель LoftSchool").edit-review-form__input
-                .edit-review-form__row
-                  label.edit-review-form__block
-                    .edit-review-form__text.edit-review-form__text--margin Отзыв
-                    textarea(placeholder="Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!").edit-review-form__textarea
-                .edit-review-form__row.edit-review-form__row--btns
-                  button.edit-review__btn.edit-review__btn--cancel Отмена
-                  button.edit-review__btn.edit-review__btn--save Сохранить
+        reviews-add(v-if="showAddingForm")
         ul.admin-review
-          li.admin-review__item.admin-review__item--add
+          li.admin-review__item.admin-review__item--add(
+            @click="showAddingForm = true"
+            v-if="showAddingForm === false"
+            )
             .admin-review__item--add__btn
-          li.admin-review__item
-            .admin-review__item-author
-              .admin-review__item-author-img
-                img(src="../../../images/content/sabancev-small.png").admin-review__item-pic
-              .admin-review__item-author-desc
-                .admin-review__item-author-name Владимир Сабанцев
-                .admin-review__item-author-job Преподаватель
-            .admin-review__item-desc Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-            .admin-review__item-btns
-              button.admin-review__item-btn.admin-review__item-btn--edit Править
-              button.admin-review__item-btn.admin-review__item-btn--delete Удалить
-          li.admin-review__item
-            .admin-review__item-author
-              .admin-review__item-author-img
-                img(src="../../../images/content/kovalchuk-small.png").admin-review__item-pic
-              .admin-review__item-author-desc
-                .admin-review__item-author-name Ковальчук Дмитрий
-                .admin-review__item-author-job Основатель Loftschool
-            .admin-review__item-desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-            .admin-review__item-btns
-              button.admin-review__item-btn.admin-review__item-btn--edit Править
-              button.admin-review__item-btn.admin-review__item-btn--delete Удалить
-          li.admin-review__item
-            .admin-review__item-author
-              .admin-review__item-author-img
-                img(src="../../../images/content/sabancev-small.png").admin-review__item-pic
-              .admin-review__item-author-desc
-                .admin-review__item-author-name Владимир Сабанцев
-                .admin-review__item-author-job Преподаватель
-            .admin-review__item-desc Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-            .admin-review__item-btns
-              button.admin-review__item-btn.admin-review__item-btn--edit Править
-              button.admin-review__item-btn.admin-review__item-btn--delete Удалить
-          li.admin-review__item
-            .admin-review__item-author
-              .admin-review__item-author-img
-                img(src="../../../images/content/kovalchuk-small.png").admin-review__item-pic
-              .admin-review__item-author-desc
-                .admin-review__item-author-name Ковальчук Дмитрий
-                .admin-review__item-author-job Основатель Loftschool
-            .admin-review__item-desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-            .admin-review__item-btns
-              button.admin-review__item-btn.admin-review__item-btn--edit Править
-              button.admin-review__item-btn.admin-review__item-btn--delete Удалить
+          li(
+            v-for="review in reviews"
+            :key="review.id").admin-review__item
+            reviews-group(
+              :review="review"
+            )
 </template>
 
 <script>
 import { mapState, mapActions } from "vuex";
 
 export default {
+  components: {
+    reviewsAdd: () => import('../reviews-add.vue'),
+    reviewsGroup: () => import('../reviews-group.vue')
+  },
+  computed: {
+    ...mapState('reviews', {
+      reviews: state => state.reviews
+    })
+  },
   data() {
     return {
+      showAddingForm: false,
       rendedPhotoUrl: "",
       review: {
         photo: ""
@@ -97,6 +43,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions('reviews', ['fetchReviews']),
     appendFileAndRenderPhoto(e) {
       const file = e.target.files[0];
       this.review.photo = file;
@@ -111,6 +58,13 @@ export default {
       } catch (error) {
         alert('sh*t happens :(')
       }
+    }
+  },
+  async created() {
+    try {
+      await this.fetchReviews();
+    } catch (error) {
+      alert('Произошла ошибка при загрузке отзывов')
     }
   }
 }
@@ -331,6 +285,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .admin-review__item--add__btn {

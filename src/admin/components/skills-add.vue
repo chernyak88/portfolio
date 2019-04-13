@@ -5,7 +5,7 @@
         input(type="text" v-model="skillTitle" placeholder="Название новой группы").admin-input
       .add-buttons
         button(type="button" @click="addSkillGroup").admin-btn.apply__btn
-        button.admin-btn.close__btn
+        button(type="button").admin-btn.close__btn
     .about-block__content
     .about-block__edit.blocked
       input(type="text" placeholder="Новый навык").admin-input.new-skill-input
