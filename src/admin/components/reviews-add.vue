@@ -18,14 +18,14 @@
           .edit-review-form__row
             label.edit-review-form__block
               .edit-review-form__text Имя автора
-              input(type="text" v-model="reviewAuthorName").edit-review-form__input
+              input(type="text" v-model="review.author").edit-review-form__input
             label.edit-review-form__block
               .edit-review-form__text Титул автора
-              input(type="text" v-model="reviewAuthorOcc").edit-review-form__input
+              input(type="text" v-model="review.occ").edit-review-form__input
           .edit-review-form__row
             label.edit-review-form__block
               .edit-review-form__text.edit-review-form__text--margin Отзыв
-              textarea(v-model="reviewText").edit-review-form__textarea
+              textarea(v-model="review.text").edit-review-form__textarea
           .edit-review-form__row.edit-review-form__row--btns
             button(type="button").edit-review__btn.edit-review__btn--cancel Отмена
             button(type="button" @click="addReviewGroup").edit-review__btn.edit-review__btn--save Сохранить
@@ -37,11 +37,7 @@ import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
-      reviewPhoto: "",
-      reviewAuthorName: "",
-      reviewAuthorOcc: "",
       rendedPhotoUrl: "",
-      reviewText: "",
       review: {
         photo: "",
         author: "",
@@ -54,8 +50,7 @@ export default {
     ...mapActions('reviews', ['addNewReviewGroup']),
     async addReviewGroup() {
       try {
-        await this.addNewReviewGroup(this.reviewPhoto, this.reviewAuthorName, this.reviewAuthorOcc, this.reviewText);
-        this.reviewPhoto = "",
+        await this.addNewReviewGroup(this.review.photo, this.review.author, this.review.occ, this.review.text);
         this.reviewAuthorName = "";
         this.reviewAuthorOcc = "";
         this.reviewText = "";
