@@ -38,7 +38,10 @@ export default {
       showAddingForm: false,
       rendedPhotoUrl: "",
       review: {
-        photo: ""
+        photo: "",
+        author: "",
+        occ: "",
+        text: ""
       }
     }
   },

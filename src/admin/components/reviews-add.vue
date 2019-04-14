@@ -37,12 +37,16 @@ import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
+      reviewPhoto: "",
       reviewAuthorName: "",
       reviewAuthorOcc: "",
       rendedPhotoUrl: "",
       reviewText: "",
       review: {
-        photo: ""
+        photo: "",
+        author: "",
+        occ: "",
+        text: ""
       }
     }
   },
@@ -50,7 +54,8 @@ export default {
     ...mapActions('reviews', ['addNewReviewGroup']),
     async addReviewGroup() {
       try {
-        await this.addNewReviewGroup(this.reviewAuthorName, this.reviewAuthorOcc, this.reviewText);
+        await this.addNewReviewGroup(this.reviewPhoto, this.reviewAuthorName, this.reviewAuthorOcc, this.reviewText);
+        this.reviewPhoto = "",
         this.reviewAuthorName = "";
         this.reviewAuthorOcc = "";
         this.reviewText = "";

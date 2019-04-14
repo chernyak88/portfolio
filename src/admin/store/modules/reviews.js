@@ -9,20 +9,15 @@ export default {
     }
   },
   actions: {
-    async addNewReviewGroup({commit}, reviewAuthorPhoto, reviewAuthorName, reviewAuthorOcc, reviewText ) {
-      try {
-        const response = await this.$axios.post("/reviews", {
-          photo: reviewAuthorPhoto,
-          author: reviewAuthorName,
-          occ: reviewAuthorOcc,
-          text: reviewText
-        });
-        return response;
-      } catch (error) {
-        throw new Error(
-          error.response.data.error || error.response.data.message
-        );
-      }   
+    addNewReviewGroup(store, review) {
+      const formData = new FormData();
+
+      formData.append('photo', review.photo);
+      formData.append('author', review.author);
+      formData.append('occ', review.occ);
+      formData.append('text', review.text);
+
+      this.$axios.post('/reviews', formData);
     },
     async fetchReviews({commit}) {
       try {

@@ -2,7 +2,7 @@
   .reviews-container
     .admin-review__item-author
       .admin-review__item-author-img
-        img(src="").admin-review__item-pic
+        img(:src="`https:/webdev-api.loftschool.com/${review.photo}`" alt="Аватар").admin-review__item-pic
       .admin-review__item-author-desc
         .admin-review__item-author-name
         .admin-review__item-author-job
