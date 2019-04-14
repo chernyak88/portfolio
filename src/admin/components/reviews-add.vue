@@ -37,6 +37,7 @@ import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
+      showAddingForm: true,
       rendedPhotoUrl: "",
       review: {
         photo: "",
@@ -50,10 +51,7 @@ export default {
     ...mapActions('reviews', ['addNewReviewGroup']),
     async addReviewGroup() {
       try {
-        await this.addNewReviewGroup(this.review.photo, this.review.author, this.review.occ, this.review.text);
-        this.reviewAuthorName = "";
-        this.reviewAuthorOcc = "";
-        this.reviewText = "";
+        await this.addNewReviewGroup(this.review);
       } catch (error) {
         alert(error.message)
       }
