@@ -9,11 +9,14 @@
         ul.admin-works
           li.admin-works__item.admin-works__item--add(
             @click="showAddingForm = true"
-            v-if="showAddingForm === false"
             )
             .admin-works__item--add__btn
-          li(v-if="false").admin-works__item
-            works-group()
+          li(
+            v-for="work in works"
+            :key="work.id").admin-works__item
+            works-group(
+              :work="work"
+            )
 </template>
 
 <script>
@@ -24,9 +27,47 @@ export default {
     worksAdd: () => import('../works-add.vue'),
     worksGroup: () => import('../works-group.vue')
   },
+  computed: {
+    ...mapState('works', {
+      works: state => state.works
+    })
+  },
   data() {
     return {
-      showAddingForm: false
+      showAddingForm: false,
+      rendedPhotoUrl: "",
+      work: {
+        title: "",
+        techs: "",
+        photo: "",
+        link: "",
+        description: ""
+      }
+    }
+  },
+  methods: {
+    ...mapActions('works', ['fetchWorks']),
+    appendFileAndRenderPhoto(e) {
+      const file = e.target.files[0];
+      this.review.photo = file;
+
+      const reader = new FileReader();
+
+      try {
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          this.rendedPhotoUrl = reader.result
+        }
+      } catch (error) {
+        alert('sh*t happens :(')
+      }
+    }
+  },
+  async created() {
+    try {
+      await this.fetchWorks();
+    } catch (error) {
+      alert('Произошла ошибка при загрузке отзывов')
     }
   }
 }

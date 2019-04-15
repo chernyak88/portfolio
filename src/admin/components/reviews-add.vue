@@ -1,5 +1,5 @@
 <template lang="pug">
-  .admin-edit-review
+  .admin-edit-review(v-if="showAddingForm")
     .edit-review__title Новый отзыв
     .edit-review__page
       label.edit-review__load
@@ -27,7 +27,7 @@
               .edit-review-form__text.edit-review-form__text--margin Отзыв
               textarea(v-model="review.text").edit-review-form__textarea
           .edit-review-form__row.edit-review-form__row--btns
-            button(type="button").edit-review__btn.edit-review__btn--cancel Отмена
+            button(type="button" @click="showAddingForm = false").edit-review__btn.edit-review__btn--cancel Отмена
             button(type="button" @click="addReviewGroup").edit-review__btn.edit-review__btn--save Сохранить
 </template>
 

@@ -9,7 +9,6 @@
         ul.admin-review
           li.admin-review__item.admin-review__item--add(
             @click="showAddingForm = true"
-            v-if="showAddingForm === false"
             )
             .admin-review__item--add__btn
           li(

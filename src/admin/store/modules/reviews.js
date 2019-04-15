@@ -34,7 +34,7 @@ export default {
     async fetchReviews({commit}) {
       try {
         const response = await this.$axios.get('/reviews/122');
-        commit("SET_REVIEWS", response.data.reverse());
+        commit("SET_REVIEWS", response.data);
         return response;
       } catch (error) {
         throw new Error(

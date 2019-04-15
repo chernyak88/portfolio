@@ -8,7 +8,7 @@
               img.admin-user__avatar-pic(src="../../images/content/user.jpg")
             .admin-user__name Игорь Черняк
           .header__title Панель администрирования
-        a.exit-btn Выйти
+        a(href="https://chernyak88.github.io/portfolio/").exit-btn Выйти
 </template>
 
 <style lang="postcss" scoped>
