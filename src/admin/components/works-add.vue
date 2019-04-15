@@ -63,6 +63,11 @@ export default {
     async addWorkGroup() {
       try {
         await this.addNewWorkGroup(this.work);
+        this.work.title = '';
+        this.work.techs = '';
+        this.work.photo = '';
+        this.work.link = '';
+        this.work.description = '';
       } catch (error) {
         alert(error.message)
       }

@@ -18,7 +18,7 @@ export default {
     }
   },
   actions: {
-    async addNewWorkGroup(state, work) {
+    async addNewWorkGroup({commit}, work) {
       const formData = new FormData();
 
       formData.append('title', work.title);

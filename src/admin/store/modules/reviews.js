@@ -7,6 +7,9 @@ export default {
     SET_REVIEWS: (state, reviews) => {
       state.reviews = reviews
     },
+    ADD_REVIEW: (state, review) => {
+      state.reviews.push(review);
+    },
     REMOVE_REVIEW: (state, deletedReviewId) => {
       state.reviews = state.reviews.filter(review => review.id != deletedReviewId)
     },
@@ -15,7 +18,7 @@ export default {
     }
   },
   actions: {
-    async addNewReviewGroup(store, review) {
+    async addNewReviewGroup({commit}, review) {
       const formData = new FormData();
 
       formData.append('photo', review.photo);
@@ -24,8 +27,9 @@ export default {
       formData.append('text', review.text);
       
       try {
-        await this.$axios.post('/reviews', formData);
-        return formData;
+        const response = await this.$axios.post('/reviews', formData);
+        commit('ADD_REVIEW', response.data);
+        return response;
       } catch (error) {
         error.response.data.error || error.response.data.message
       }

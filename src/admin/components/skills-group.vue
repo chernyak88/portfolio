@@ -4,8 +4,8 @@
       .add-group
         h2 {{category.category}}
       .add-buttons
-        button.admin-btn.apply__btn
-        button.admin-btn.close__btn
+        button(type="button").admin-btn.apply__btn
+        button(type="button" @click="removeExistedCategory").admin-btn.close__btn
     .about-block__content
       table.about-block__table
         skills-item(
@@ -40,6 +40,14 @@ export default {
   },
   methods: {
     ...mapActions('skills', ['addSkill']),
+    ...mapActions('categories', ['removeCategory']),
+    async removeExistedCategory() {
+      try {
+        await this.removeCategory(this.category.id);
+      } catch (error) {
+        alert('Произошла ошибка')
+      }
+    },
     async addNewSkill() {
       try {
         await this.addSkill(this.skill)

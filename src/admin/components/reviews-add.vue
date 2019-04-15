@@ -52,6 +52,10 @@ export default {
     async addReviewGroup() {
       try {
         await this.addNewReviewGroup(this.review);
+        this.review.photo = '';
+        this.review.author = '';
+        this.review.occ = '';
+        this.review.text = '';
       } catch (error) {
         alert(error.message)
       }

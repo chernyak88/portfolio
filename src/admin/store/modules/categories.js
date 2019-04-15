@@ -6,7 +6,10 @@ export default {
   mutations: {
     SET_CATEGORIES: (state, categories) => {
       state.categories = categories
-    }
+    },
+    REMOVE_CATEGORY: (state, deletedCategoryId) => {
+      state.categories = state.categories.filter(category => category.id != deletedCategoryId)
+    },
   },
   actions: {
     async addNewSkillGroup({commit}, groupTitle) {
@@ -20,6 +23,15 @@ export default {
           error.response.data.error || error.response.data.message
         );
       }   
+    },
+    async removeCategory({commit}, categoryId) {
+      try {
+        const response = await this.$axios.delete(`/categories/${categoryId}`);
+        commit('REMOVE_CATEGORY', categoryId);
+        return response
+      } catch (error) {
+        error.response.data.error || error.response.data.message
+      }
     },
     async fetchCategories({commit}) {
       try {
