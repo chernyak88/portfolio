@@ -1,412 +1,118 @@
 <template lang="pug">
-  .container
-    .admin-block-title
-      .container.container__admin-block-title
-        .admin-block-name Блок «Работы»
-    .admin-block.admin-works
-      .container.admin-works__container
-        works-add(v-if="showAddingForm")
-        ul.admin-works
-          li.admin-works__item.admin-works__item--add(
-            @click="showAddingForm = true"
-            )
-            .admin-works__item--add__btn
-          li(
-            v-for="work in works"
-            :key="work.id").admin-works__item
-            works-group(
-              :work="work"
-            )
+    section.works-section
+        .container 
+            .title Блок «Работы»
+            .works-container
+              work-form(v-if="workForm.show")
+              work-cards
+              
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
-
+import { mapState } from "vuex";
 export default {
   components: {
-    worksAdd: () => import('../works-add.vue'),
-    worksGroup: () => import('../works-group.vue')
+    workForm: () => import("components/work/workForm.vue"),
+    workCards: () => import("components/work/workСards.vue"),
   },
   computed: {
     ...mapState('works', {
-      works: state => state.works
+      workForm: state => state.workForm
     })
   },
-  data() {
-    return {
-      showAddingForm: false,
-      rendedPhotoUrl: "",
-      work: {
-        title: "",
-        techs: "",
-        photo: "",
-        link: "",
-        description: ""
-      }
-    }
-  },
-  methods: {
-    ...mapActions('works', ['fetchWorks']),
-    appendFileAndRenderPhoto(e) {
-      const file = e.target.files[0];
-      this.review.photo = file;
-
-      const reader = new FileReader();
-
-      try {
-        reader.readAsDataURL(file);
-        reader.onload = () => {
-          this.rendedPhotoUrl = reader.result
-        }
-      } catch (error) {
-        alert('sh*t happens :(')
-      }
-    }
-  },
-  async created() {
-    try {
-      await this.fetchWorks();
-    } catch (error) {
-      alert('Произошла ошибка при загрузке отзывов')
-    }
+  created() {
+    this.workForm.show = false;
   }
 }
 </script>
 
-<style lang="postcss" scoped>
+<style lang="postcss">
+
 @import "../../../styles/mixins.pcss";
 
-.admin-works__container {
-  display: flex;
-  flex-direction: column;
-}
-
-.admin-edit-work {
-  width: 100%;
-  box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
+.works-container {
+  background: #fff;
   margin-bottom: 30px;
 }
-
-.edit-work__title {
-  padding: 25px;
-  font-size: 18px;
-  font-weight: 700;
-  border-bottom: 1px solid #eeeeef;
-}
-
-.edit-work__page {
-  width: 100%;
-  display: flex;
-  padding: 40px 25px;
-  background-color: #fff;
-
-  @include tablets {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-.edit-work__load {
-  width: calc(50% - 30px);
-  height: 276px;
-  margin-right: 30px;
-  border: 1px dashed #a1a1a1;
-  background-color: #dee4ed;
-  position: relative;
-  cursor: pointer;
-
-  @include tablets {
-    width: 70%;
-    margin-right: 0;
-    margin-bottom: 20px;
-    background-image: url('../../../images/admin-works/1.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  @include phones {
-    width: 100%;
-  }  
-}
-
-.edit-work__load-desc {
-  width: 235px;
-  height: 135px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-
-  @include tablets {
-    display: none;
-  }
-}
-
-.edit-work__load-text {
-  opacity: 0.5;
-  color: #414c63;
-  font-weight: 600;
-  line-height: 34px;
-  margin-bottom: 25px;
-}
-
-.edit-work__btn {
-  width: 180px;
-  height: 50px;
-  border-radius: 25px;
-  color: #fff;
-  background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
-  text-transform: uppercase;
-  font-weight: 700;
-
-  &--cancel {
-    width: 140px;
-    background: transparent;
-    color: #383bcf;
-    text-transform: none;
-  }
-
-  &--tablet {
-    display: none;
-
-    @include tablets {
-      display: block;
-      width: 180px;
-      background: transparent;
-      color: #383bcf;
-      text-transform: none;
-      margin-bottom: 30px;
-    }
-  }
-}
-
-.edit-work__desc {
-  width: 50%;
-
-  @include tablets {
-    width: 75%;
-  }
-
-  @include phones {
-    width: 100%;
-  }
-}
-
-.edit-work-form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.edit-work-form__row {
-  margin-bottom: 25px;
-  width: 100%;
-
-  &--btns {
-    display: flex;
-    justify-content: flex-end;
-  }
-}
-
-.edit-work-form__block{
-  width: 100%;
-}
-
-.edit-work-form__text {
-  opacity: 0.5;
-  color: #414c63;
-  font-weight: 700;
-
-  &--margin {
-    margin-bottom: 15px;
-  }
-}
-
-.edit-work-form__input {
-  width: 100%;
-  padding: 15px 0;
-  font-weight: 700;
-  border: none;
-  border-bottom: 2px solid #414c63;
-}
-
-.edit-work-form__textarea {
-  display: block;
-  padding: 10px;
-  resize: none;
-  width: 100%;
-  min-height: 145px;
-  font-weight: 700;
-  border: 1px solid #e2e4e8;
-  line-height: 30px;
-}
-
-.edit-work-form__list {
-  display: flex;
-  opacity: 0.7;
-  color: #283340;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.edit-work-form__item {
-  padding: 5px 10px;
-  border-radius: 15px;
-  background-color: #f4f4f4;
-  margin-right: 10px;
-
-  &:last-child {
-    margin-right: 10px;
-  }
-
-  &:after {
-    content: url('../../../images/icons/cancel.png');
-    width: 8px;
-    height: 8px;
-    margin-left: 8px;
-  }
-}
-
-.admin-works {
+.works {
   display: flex;
   flex-wrap: wrap;
 }
-
-.admin-works__item {
-  width: calc(33% - 20px);
-  margin-right: 20px;
-  margin-bottom: 20px;
-  height: 555px;
-  display: flex;
-  flex-direction: column;
+.works__item {
+  width: 30%;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  min-height: 300px;
+  background: #fff;
 
   @include tablets {
-    width: calc(50% - 20px);
+    width: 45%;
   }
-
   @include phones {
     width: 100%;
-    margin-right: 0;
+    margin-left: 0;
+    min-height: 111px;
+  }
+  .card {
+    padding: 0;
   }
 }
 
-.admin-works__item--add {
-  background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.admin-works__item--add__btn {
-  width: 150px;
-  height: 150px;
+.works__pic {
   position: relative;
-  border: 2px solid #fff;
-  border-radius: 50%;
-
-  &:before {
-    content: '+';
-    display: block;
-    font-size: 72px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  &:after {
-    content: 'Добавить работу';
-    position: absolute;
-    top: 110%;
-    left: 5%;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 30px;
-  }
+}
+.works__tag {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
 
-.admin-works__item-content {
-  padding: 20px;
+.works__data {
+  padding: 40px 30px;
+  @include phones {
+    padding: 30px 20px;
+  }
 }
-
-.admin-works__item-title {
-  color: #414c63;
+.works__title {
   font-size: 18px;
   font-weight: 700;
   line-height: 30px;
-  margin-bottom: 10px;
-}
-
-.admin-works__item-desc {
-  opacity: 0.7;
-  color: #414c63;
-  font-weight: 700;
-  line-height: 30px;
   margin-bottom: 25px;
+
+  @include phones {
+    margin-bottom: 17px;
+  }
 }
 
-.works__item-link {
+.works__text {
+  opacity: 0.7;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 30px;
+  margin-bottom: 30px;
+
+  @include phones {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
+
+.works__link {
   color: #383bcf;
-  font-weight: 700;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.admin-works__item-btns {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-}
-
-.admin-works__item-btn {
-  width: 115px;
-  height: 30px;
-  background: transparent;
-  font-weight: 700;
-  opacity: .5;
-
-  &:hover {
-    opacity: 1;
-  }
-
-  @include bp-870 {
-    font-size: 13px;
-  }
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 30px;
 
   @include phones {
     font-size: 14px;
   }
 }
 
-.admin-works__item-btn--edit:after {
-  content: url('../../../images/icons/pencil-edit-button.png');
-  display: inline-block;
-  height: 17px;
-  width: 17px;
-  margin-left: 10px;
-  vertical-align: bottom;
-
-  @include bp-870 {
-    margin-left: 3px;
-  }
+.works__btns {
+  margin-top: 45px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.admin-works__item-btn--delete:after {
-  content: url('../../../images/icons/cross.png');
-  display: inline-block;
-  height: 17px;
-  width: 17px;
-  margin-left: 10px;
-
-  @include bp-870 {
-    margin-left: 3px;
-  }
-}
+    
 </style>

@@ -5,8 +5,9 @@ export default {
   },
   mutations: {
     SET_USER: (state, user) => {
-      state.user = user
-    }
+      state.user = user;
+    },
+    CLEAR_USER: state => (state.user = {})
   },
   getters: {
     userIsLogged: state => {
@@ -15,6 +16,24 @@ export default {
         Object.keys(userObj).length === 0 && userObj.constructor === Object;
 
       return userObjectIsEmpty === false;
+    },
+    userId: state => {
+      return state.user.id;
+    }
+  },
+  actions: {
+    async loginUser({ commit }, user) {
+      try {
+        const response = await this.$axios.post("/login", user);
+        return response;
+      } catch (error) {
+        alert(error.message)
+      }
+    },
+    logout({ commit }) {
+      commit("CLEAR_USER");
+      localStorage.removeItem('token');
+      location.href = "/Portfolio";
     }
   }
-}
+};

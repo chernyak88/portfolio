@@ -1,36 +1,67 @@
 <template lang="pug">
-  .container.tabs-container
-    .tabs__content
-      .admin-header__menu
-        nav.admin__nav
-          ul.nav__list
-            - var menu = [{name: 'Обо мне', link: 'https://chernyak88.github.io/portfolio/admin/#/'}, {name: 'Работы', link: 'https://chernyak88.github.io/portfolio/admin/#/works'}, {name: 'Отзывы', link: 'https://chernyak88.github.io/portfolio/admin/#/reviews'}];
-            each item in menu
-              li.nav__item
-                a(href=item.link).nav__link #{item.name}
+    .container.switches-container
+        ul.switches
+            li.switches__item(v-for="tab in tabs")
+                router-link(
+                    :data-text="tab.title"
+                    :to="tab.href"
+                    exact-active-class="active"
+                ).switches__link
 </template>
 
-<style lang="postcss" scoped>
-  @import "../../styles/mixins.pcss";
+<script>
+export default {
+   data() {
+       return {
+           tabs: [
+               { title: "Обо мне", href: "/"},
+               { title: "Работы", href: "/works"},
+               { title: "Отзывы", href: "/reviews"}
+           ]
+       }
+   }
+};
+</script>
 
-  .admin__nav {
-  .nav__link {
-    font-weight: 600;
+<style lang="postcss">
+@import "../../styles/mixins.pcss";
 
-    &:hover {
-    color: #383bce;
-    transition: .3s;
-  }
+.switches {
+    display: flex;
+    height: 77px;
+    
+    &__item {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 36.14px;
+        height: 100%;
+        margin-right: 30px;
 
-  &:hover:after {
-    content: '';
-    position: absolute;
-    top: 200%;
-    left: -30%;
-    right: -30%;
-    border-bottom: 3px solid #383bce;
-    transition: .3s;
+        @include phones {
+            margin-right: 3px;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
     }
-  }
+    &__link {       
+        text-decoration: none;
+        height:100%;
+        vertical-align: middle;
+        display: flex;
+        align-items: center;
+        width: 125px;
+        justify-content: center;
+        border-bottom: 3px solid transparent;
+        &::before {
+            content: attr(data-text);
+        }
+         &:hover, &.active {
+            font-weight: 600;
+            color: #383bcf;
+            border-bottom: 3px solid #383bcf;
+        }
+    }
 }
+
 </style>

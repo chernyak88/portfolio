@@ -1,80 +1,87 @@
 <template lang="pug">
-  .header-container
-    header.header
-      .container
+    .container.header-container
         .header__info
-          .admin-user
-            .admin-user__avatar
-              img.admin-user__avatar-pic(src="../../images/content/user.jpg")
-            .admin-user__name Игорь Черняк
-          .header__title Панель администрирования
-        a(href="https://chernyak88.github.io/portfolio/").exit-btn Выйти
+            .user
+                .user__pic
+                    img(src="../../images/content/user.jpg").user__pic-avatar
+                .user__name
+                    span Игорь Черняк
+            .header__title Панель администрирования
+        a(@click="logout").exit-btn Выйти
 </template>
 
-<style lang="postcss" scoped>
+<script>
+import { mapActions } from "vuex";
+export default {
+    methods: {
+        ...mapActions("user", ["logout"])
+    }
+};
+</script>
+
+<style lang="postcss">
 @import "../../styles/mixins.pcss";
 
-.header-container {
-  background: linear-gradient(90deg,#3e3e59,#454573);
-  padding: 17px 0;
-}
-
 .header {
-  color: #fff;
-
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+    color: #fff;
+    background-image: linear-gradient(to right, #3e3e59 0%, #454573 100%);
+    &-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+     &__info {
+        display: flex;
+        align-items: center;
+        padding: 16px 0;
+    }
+    &__title {
+        opacity: 0.5;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 34px;
+        @include phones {
+            display: none;
+        }
+    }
 }
 
-.header__info {
+.user {
   display: flex;
   align-items: center;
-}
-  
-.admin-user {
-  display: flex;
-  align-items: center;
-  margin-right: 20px;
-}
-
-.admin-user__avatar {
-  margin-right: 20px;
-  width: 45px;
-  height: 45px;
-  overflow: hidden;
-  flex-shrink: 0;
-  border-radius: 50%;
-}
-
-.admin-user__avatar-pic {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.admin-user__name {
-  font-weight: 700;
+  margin-right: 28px;
   font-size: 18px;
+  font-weight: 400;
+  line-height: 34px;
 }
 
-.header__title {
-  color: hsla(0,0%,100%,.5);
-
-  @include phones {
-    display: none;
+.user__pic {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  overflow: hidden;
+  &-avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    background: center center no-repeat / cover;
   }
 }
 
-.exit-btn {
-  font-size: 14px;
-  opacity: .7;
-  text-decoration: underline;
+.user__name {
+  font-size: 18px;
+  font-weight: 700;
+  @include phones {
+    margin-top: -30px;
+  }
 }
 
-.admin-header__menu {
-  padding: 30px 25px;
+.user__occ {
+  opacity: 0.5;
+  font-size: 16px;
+  font-weight: 600;
 }
+
+
 </style>

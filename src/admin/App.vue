@@ -1,33 +1,41 @@
 <template lang="pug">
   .root-wrapper-container
-    .root-container
-      app-header 
-      tabs
-      router-view
+    .root-container 
+      header.header
+        app-header(v-if="userIsLogged")
+      section.switches
+        tabs(v-if="userIsLogged")
+      main.content
+        router-view
+    tooltips
+
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters } from "vuex";
+import { mapGetters, mapState } from 'vuex';
 export default {
+  name: "app",
   components: {
-    login: () => import("./components/pages/login"),
     appHeader: () => import("./components/header"),
-    tabs: () => import("./components/tabs")
+    tabs: () => import("./components/tabs"),
+    tooltips: () => import("./components/tooltips")
+  },
+  computed: {
+    ...mapGetters('user', ['userIsLogged'])
   }
 };
 </script>
+
 
 <style lang="postcss">
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
 @import "normalize.css";
 @import "../styles/mixins.pcss";
+@import "../styles/admin/base-admin.pcss";
 @import "../styles/layout/base.pcss";
 
-@import "../styles/blocks/about.pcss";
-@import "../styles/blocks/nav.pcss";
-@import "../styles/admin/admin-base.pcss";
-@import "../styles/admin/admin-header.pcss";
-@import "../styles/admin/admin-about.pcss";
-@import "../styles/admin/admin-works.pcss";
-@import "../styles/admin/admin-reviews.pcss";
+
+@import "../styles/admin/root-container.pcss";
+@import "../styles/admin/btn.pcss";
+@import "../styles/admin/content.pcss";
 </style>

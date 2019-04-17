@@ -1,415 +1,256 @@
 <template lang="pug">
-  .container
-    .admin-block-title
-      .container.container__admin-block-title
-        .admin-block-name Блок «Отзывы»
-    .admin-block.admin-reviews
-      .container.admin-reviews__container
-        reviews-add(v-if="showAddingForm")
-        ul.admin-review
-          li.admin-review__item.admin-review__item--add(
-            @click="showAddingForm = true"
-            )
-            .admin-review__item--add__btn
-          li(
-            v-for="review in reviews"
-            :key="review.id").admin-review__item
-            reviews-group(
-              :review="review"
-            )
+  section.reviews-section
+    .container
+      .title Блок «Отзывы»
+      .reviews-container
+        review-form(
+          v-if="reviewForm.show"
+        )
+        reviews-cards
+               
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
-
+import { mapState } from "vuex";
 export default {
   components: {
-    reviewsAdd: () => import('../reviews-add.vue'),
-    reviewsGroup: () => import('../reviews-group.vue')
-  },
-  computed: {
-    ...mapState('reviews', {
-      reviews: state => state.reviews
-    })
+    reviewForm: () => import("components/reviews/reviewForm.vue"),
+    reviewsCards: () => import("components/reviews/reviewsCards.vue"),
   },
   data() {
     return {
-      showAddingForm: false,
-      rendedPhotoUrl: "",
-      review: {
-        photo: "",
-        author: "",
-        occ: "",
-        text: ""
-      }
     }
   },
-  methods: {
-    ...mapActions('reviews', ['fetchReviews']),
-    appendFileAndRenderPhoto(e) {
-      const file = e.target.files[0];
-      this.review.photo = file;
-
-      const reader = new FileReader();
-
-      try {
-        reader.readAsDataURL(file);
-        reader.onload = () => {
-          this.rendedPhotoUrl = reader.result
-        }
-      } catch (error) {
-        alert('sh*t happens :(')
-      }
-    }
+  computed: {
+    ...mapState("reviews", {
+      reviewForm: state => state.reviewForm,
+      editedReview: state => state.editedReview
+    })
   },
-  async created() {
-    try {
-      await this.fetchReviews();
-    } catch (error) {
-      alert('Произошла ошибка при загрузке отзывов')
+  created() {
+    this.reviewForm.show = false;
+  }
+};
+</script>
+
+
+
+<style lang="postcss">
+
+@import "../../../styles/mixins.pcss";
+
+.reviews__form {
+  margin-bottom: 30px;
+  .edit-form__buttons {
+    padding-right: 23%;
+    @include tablets {
+      padding-right: 5%;
+      justify-content: flex-end;
     }
   }
 }
-</script>
 
-<style lang="postcss" scoped>
-@import "../../../styles/mixins.pcss";
+.edit-form__container {
+  display: flex;
+  @include tablets {
+    flex-direction: column;
+    padding: 0 106px;
+  }
+   @include phones {
+     padding: 0;
+   }
+}
 
-.admin-reviews__container {
+.edit-form__col {
+  flex: 1;
+  padding: 12px;
+}
+
+.edit-form__img {
+  border: 1px dashed #a1a1a1;
+  background-color: #dee4ed;
+  padding: 0 25%;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+   @include phones {
+     padding: 0 5%;
+   }
+
+  &-text {
+    opacity: 0.5;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 33.89px;
+    margin: 0 auto;
+    margin-bottom: 27px;
+  }
 }
 
-.admin-edit-review {
-  width: 100%;
-  box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
-  margin-bottom: 30px;
+.edit-form__btn-file {
+  margin: 0 auto;
+  position: relative;
 }
 
-.edit-review__title {
-  padding: 25px;
-  font-size: 18px;
-  font-weight: 700;
-  border-bottom: 1px solid #eeeeef;
-}
-
-.edit-review__page {
-  width: 100%;
+.edit-form__buttons {
   display: flex;
-  padding: 40px 25px;
-  background-color: #fff;
+  align-items: center;
+  justify-content: flex-end;
+  @include tablets {
+    justify-content: center;
+  }
+
+  &-item {
+    margin-right: 60px;
+    &:last-child {
+      margin-right: 0;
+    }
+     @include phones {
+       margin-right: 20px;
+     }
+  }
+}
+
+
+.card {
+  padding: 30px;
+  background: #fff;
+  height: 100%;
+  box-shadow: 4.1px 2.9px 20px 0 rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+   @include phones {
+     padding: 7% 5%;
+   }
+  &__title {
+    padding: 30px 2%;
+    border-bottom: 1px solid rgba(31, 35, 45, 0.15);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 34px;
+    margin-bottom: 30px;
+  }
+}
+
+.reviews__form-content {
+  padding-right: 20%;
+  display: flex;
+  @include tablets {
+    padding: 0;
+  }
 
   @include phones {
     flex-direction: column;
-    align-items: center;
   }
 }
-
-.edit-review__load {
-  width: calc(25% - 20px);
-  margin-right: 20px;
-  cursor: pointer;
-
-  @include tablets {
-    width: calc(20% - 20px);
-  }
-
-  @include phones {
-    width: 80%;
-    margin-right: 0;
-    margin-bottom: 20px;
-  } 
-}
-
-.edit-review__load-input{
-  display: none;
-}
-
-.edit-review__load-desc {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.edit-review__load-photo {
-  width: 200px;
-  height: 200px;
-  background: #dee4ed;
-  border-radius: 50%;
-  position: relative;
-  margin-bottom: 20px;
-
-  &.filled {
-    background: center center no-repeat / cover;
-    &:after {
-      display: none;
-    }
-  }
-
-  @include tablets {
-    width: 150px;
-    height: 150px;
-  }
-
-  &::after {
-    content: url('../../../images/icons/man-user.png');
+.reviews__form-file_input {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+    top: 0;
+    left: -9999px;
 }
 
-.edit-review__btn {
-  width: 170px;
-  height: 50px;
-  font-weight: 700;
-  background: transparent;
-  color: #383bcf;
+.reviews__form-col {
+  flex: 1;
 }
 
-.edit-review__desc {
-  width: 65%;
-  
-  @include tablets {
-    width: 80%;
-  }
+.reviews__form-user__pic {
+  margin-right: 30px;
+  text-align: center;
 
   @include phones {
-    width: 100%;
     margin-right: 0;
+    margin-bottom: 45px;
   }
 }
 
-.edit-review-form {
-  width: 100%;
+.reviews__form-pic {
+  margin-bottom: 30px;
+  @include phones {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+.reviews__form-add {
+  color: #383bcf;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 33.89px;
+}
+
+.reviews__form-row {
   display: flex;
-  flex-direction: column;
-}
-
-.edit-review-form__row {
-  margin-bottom: 25px;
-  width: 100%;
-
-  &:first-child {
-    display: flex;
-
-    @include phones {
-      flex-direction: column;
+  margin-bottom: 35px;
+  @include tablets {
+    flex-direction: column;
+    padding-right: 150px;
+    &:last-child {
+      padding-right: 0;
     }
   }
-
-  &--btns {
-    display: flex;
-    justify-content: flex-end;
-
-    @include phones {
-      justify-content: center;
-    }
+  &:last-child {
+    margin-bottom: 0;
   }
-}
-
-.edit-review-form__block{
-  width: 100%;
 
   @include phones {
-    margin-bottom: 25px;
+    padding-right: 0;
   }
 }
 
-.edit-review-form__text {
-  opacity: 0.5;
-  color: #414c63;
-  font-weight: 700;
 
-  &--margin {
-    margin-bottom: 15px;
-  }
-}
 
-.edit-review-form__input {
-  width: calc(100% - 20px);
-  padding: 15px 0;
-  font-weight: 700;
-  border: none;
-  border-bottom: 2px solid #414c63;
-}
-
-.edit-review-form__textarea {
-  display: block;
-  padding: 10px;
-  resize: none;
-  width: 100%;
-  min-height: 145px;
-  font-weight: 700;
-  border: 1px solid #e2e4e8;
-  line-height: 30px;
-}
-
-.edit-review__btn--save {
-  width: 180px;
-  height: 50px;
-  border-radius: 25px;
-  color: #fff;
-  background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-.admin-review {
+.reviews {
   display: flex;
   flex-wrap: wrap;
-}
-
-.admin-review__item {
-  width: calc(33% - 20px);
-  margin-right: 20px;
-  margin-bottom: 20px;
-  min-height: 380px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 15px;
-
-  @include tablets {
-    width: calc(50% - 20px);
-  }
 
   @include phones {
-    width: 100%;
+  
+  }
+}
+
+.reviews__item {
+  width: calc(50%-30px);
+  max-width: 340px;
+  min-height: 380px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  @include tablets {
+    width: 45%;
+    min-height: 100%;
+  }
+
+   @include phones {
+     min-width: 280px;
+     margin-left: 0;
+     width: 100%;
+     min-height: 100%;
+     
+     
+   }
+  .user {
     margin-right: 0;
   }
 }
 
-.admin-review__item--add {
-  background-image: linear-gradient(to right, #006aed 0%, #3f35cb 100%);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.admin-review__item--add__btn {
-  width: 150px;
-  height: 150px;
-  position: relative;
-  border: 2px solid #fff;
-  border-radius: 50%;
-
-  &:before {
-    content: '+';
-    display: block;
-    font-size: 72px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  &:after {
-    content: 'Добавить отзыв';
-    position: absolute;
-    top: 110%;
-    left: 5%;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 30px;
-  }
-}
-
-.admin-review__item-author {
-  display: flex;
-  padding-bottom: 25px;
-  border-bottom: 1px solid #dddedf;
-  margin-bottom: 25px;
-}
-
-.admin-review__item-author-img {
-  margin-right: 15px;
-}
-
-.admin-review__item-author-name {
-  color: #414c63;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.admin-review__item-author-job {
-  opacity: 0.5;
-  color: #414c63;
-  font-weight: 700;
-}
-
-.admin-review__item-desc {
+.reviews__content-text {
   opacity: 0.7;
-  color: #414c63;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 30px;
-  margin-bottom: 25px;
+  margin-bottom: 60px;
 }
 
-.admin-review__item-btns {
+.reviews__btns {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
 }
 
-.admin-review__item-btn {
-  width: 115px;
-  height: 30px;
-  background: transparent;
-  font-weight: 700;
-  opacity: .5;
-
-  &:hover {
-    opacity: 1;
-  }
-
-  @include bp-960 {
-    font-size: 13px;
-  }
-
-  @include bp-870 {
-    font-size: 11px;
-  }
-
-  @include phones {
-    font-size: 14px;
-  }
-}
-
-.admin-review__item-btn--edit:after {
-  content: url('../../../images/icons/pencil-edit-button.png');
-  display: inline-block;
-  height: 17px;
-  width: 17px;
-  margin-left: 10px;
-  vertical-align: bottom;
-
-  @include bp-870 {
-    margin-left: 0;
-  }
-
-  @include phones {
-    margin-left: 3px;
-  }
-}
-
-.admin-review__item-btn--delete:after {
-  content: url('../../../images/icons/cross.png');
-  display: inline-block;
-  height: 17px;
-  width: 17px;
-  margin-left: 10px;
-
-  @include bp-870 {
-    margin-left: 0;
-  }
-
-  @include phones {
-    margin-left: 3px;
-  }
-}
+    
 </style>
