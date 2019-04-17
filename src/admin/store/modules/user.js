@@ -33,7 +33,7 @@ export default {
     logout({ commit }) {
       commit("CLEAR_USER");
       localStorage.removeItem('token');
-      location.href = "/Portfolio";
+      location.href = "/portfolio";
     }
   }
 };
