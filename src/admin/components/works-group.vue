@@ -1,7 +1,7 @@
 <template lang="pug">
   .works-container(v-if="editmode === false")
     .admin-works__item-img
-      img(:src="`https:/webdev-api.loftschool.com/${work.photo}`" alt="Аватар").admin-works__item-pic
+      img(:src="`https:/webdev-api.loftschool.com/${work.photo}`" alt="Превью работы").admin-works__item-pic
     .admin-works__item-content
       .admin-works__item-title {{work.title}}
       .admin-works__item-desc {{work.description}}

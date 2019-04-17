@@ -4,7 +4,7 @@
       .admin-header__menu
         nav.admin__nav
           ul.nav__list
-            - var menu = [{name: 'Обо мне', link: 'http://localhost:8080/admin#/'}, {name: 'Работы', link: 'http://localhost:8080/admin#/works'}, {name: 'Отзывы', link: 'http://localhost:8080/admin#/reviews'}];
+            - var menu = [{name: 'Обо мне', link: 'https://chernyak88.github.io/portfolio/admin/#/'}, {name: 'Работы', link: 'https://chernyak88.github.io/portfolio/admin/#/works'}, {name: 'Отзывы', link: 'https://chernyak88.github.io/portfolio/admin/#/reviews'}];
             each item in menu
               li.nav__item
                 a(href=item.link).nav__link #{item.name}
