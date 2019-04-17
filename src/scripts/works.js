@@ -1,6 +1,6 @@
 import Vue from "vue";
 import axios from "axios";
-import requests from "../admin/requests";
+
 
 const thumbs = {
   template: "#slider-thumbs",
@@ -51,7 +51,7 @@ const info = {
   },
   computed: {
     tagsArray() {
-      return this.currentWork.techs.split(',');
+      return this.currentWork.techs.split(",");
     }
   }
 };
@@ -85,7 +85,8 @@ new Vue({
       if (value > worksAmount) this.currentIndex = 0;
       if (value < 0) this.currentIndex = worksAmount;
     },
-    makeArrWithRequiredImages(data) {
+
+    makeArrWithReguireImages(data) {
       return data.map(item => {
         const requiredPic = require(`../images/content/${item.photo}`);
         item.photo = requiredPic;
@@ -103,13 +104,14 @@ new Vue({
           break;
       }
     },
-    selectWork(id){
+    selectWork(id) {
       this.currentIndex = id;
     }
   },
   created() {
-    axios.get('/works/122').then(response => {
+    axios.get('https://webdev-api.loftschool.com/works/122').then(response => {
       this.works = response.data
     })
+
   }
 });

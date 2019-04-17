@@ -12,8 +12,8 @@ script(type="text/x-template")#slider-container
     )
 
 script(type="text/x-template")#slider-display
-  .works-slider__pics(v-if="currentWork")
-    .works-slider__pics-content(:data-slide="currentIndex + 1")
+  .works-slider__pics(v-if="currentWork" :data-slide="currentIndex + 1")
+    .works-slider__pics-content
       .works-slider__fullpic-container
         img(:src="`https://webdev-api.loftschool.com/${currentWork.photo}`" alt="").works-slider__fullpic
         btns(
@@ -49,7 +49,7 @@ script(type="text/x-template")#slider-info
     .works-slider__title {{currentWork.title}}
     .works-slider__desc
       p {{currentWork.description}}
-    .works-slider__link 
+    .works-slider__link
       a(:href="currentWork.link" target="_blank").iconed-link Посмотреть сайт
 
 script(type="text/x-template")#slider-tags

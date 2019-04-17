@@ -1,11 +1,10 @@
 <template lang="pug">
-    section.works-section
-        .container 
-            .title Блок «Работы»
-            .works-container
-              work-form(v-if="workForm.show")
-              work-cards
-              
+  section.works-section
+    .container 
+      .title Блок «Работы»
+      .works-container
+        work-form(v-if="workForm.show")
+        work-cards
 </template>
 
 <script>
@@ -26,7 +25,7 @@ export default {
 }
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 
 @import "../../../styles/mixins.pcss";
 

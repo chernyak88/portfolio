@@ -1,113 +1,113 @@
 <template lang="pug">
-    .edit-form
-        .card
-            .card__title
-                .card__title-text Редактирование работы
-            .card__content
-                .edit-form__container
-                    .edit-form__col
-                        .edit-form__img(
-                          :class="{'filled' : this.renderedPhotoUrl.length, 'error' : validation.firstError('renderedPhotoUrl')}"
-                          :style="{'backgroundImage' : `url(${this.renderedPhotoUrl})`}"
-                        )
-                            .edit-form__img-text Перетащите или загрузите для загрузки изображения
-                            label.edit-form__btn-file
-                                .btn-file-fake ЗАГРУЗИТЬ
-                                input.btn-file-input(
-                                  type="file"
-                                  @change="appendFileAndRenderPhoto"
-                                  )
-                                .btn-file-input-error
-                                  error-tooltip(
-                                    :errorText="validation.firstError('renderedPhotoUrl')"
-                                  )
-                    .edit-form__col
-                        .edit-form__row
-                            label.input(
-                              for="title"
-                              :class="{'error' : validation.firstError('work.title')}"
-                            )
-                                .input__title Название
-                                input(
-                                  type="text" 
-                                  name="title" 
-                                  placeholder="Введите название работы" 
-                                  v-model="work.title"
-                                ).input__elem#title
-                                .edit-form-input-error
-                                  error-tooltip(
-                                    :errorText="validation.firstError('work.title')"
-                                  )
-                        .edit-form__row
-                            label.input(
-                              for="link"
-                              :class="{'error' : validation.firstError('work.link')}"
-                            )
-                                .input__title Ссылка
-                                input(
-                                  type="text" 
-                                  name="link" 
-                                  placeholder="Вставьте ссылку" 
-                                  v-model="work.link"
-                                ).input__elem#link
-                                .edit-form-input-error
-                                  error-tooltip(
-                                    :errorText="validation.firstError('work.link')"
-                                  )
-                        .edit-form__row
-                            label.input(
-                              for="description"
-                              :class="{'error' : validation.firstError('work.description')}"
-                            )
-                                .input__title Описание
-                                textarea(
-                                  name="description"
-                                  placeholder="Введите описание работы" 
-                                  v-model="work.description"
-                                ).textarea__elem#description
-                                .edit-form-input-error
-                                  error-tooltip(
-                                    :errorText="validation.firstError('work.description')"
-                                  )
-                        .edit-form__row
-                          .add-tags
-                            .add-tags__wrapper
-                              label.input(
-                                for="tags"
-                                :class="{'error' : validation.firstError('editedTagsAsString')}"
-                              )
-                                .input__title Добавление тэга
-                                input.input__elem#tags(
-                                  type="text"
-                                  name="tags"
-                                  placeholder="Добавьте теги"
-                                  v-model="work.techs"
-                                  @change="ADD_TAGS(work.techs)"
+  .edit-form
+      .card
+          .card__title
+              .card__title-text Редактирование работы
+          .card__content
+              .edit-form__container
+                  .edit-form__col
+                      .edit-form__img(
+                        :class="{'filled' : this.renderedPhotoUrl.length, 'error' : validation.firstError('renderedPhotoUrl')}"
+                        :style="{'backgroundImage' : `url(${this.renderedPhotoUrl})`}"
+                      )
+                          .edit-form__img-text Перетащите или загрузите для загрузки изображения
+                          label.edit-form__btn-file
+                              .btn-file-fake ЗАГРУЗИТЬ
+                              input.btn-file-input(
+                                type="file"
+                                @change="appendFileAndRenderPhoto"
                                 )
-                                .edit-form-input-error
-                                  error-tooltip(
-                                    :errorText="validation.firstError('editedTagsAsString')"
-                                  )
-                            add-tags(v-if="workForm.editMode")    
-                                
-                .edit-form__buttons
-                    .edit-form__buttons-item
-                        button(
-                          type="button"
-                          @click="CLOSE_FORM"
-                        ).btn__clear Отмена
-                    .edit-form__buttons-item
-                        button(
-                          type="button"
-                          @click="addNewWork"
-                          v-if="!workForm.editMode"
-                        ).btn__load Загрузить
-                        button(
-                          type="button"
-                          v-if="workForm.editMode"
-                          @click="saveEditedWork"
-                        ).btn__load Сохранить
-        
+                              .btn-file-input-error
+                                error-tooltip(
+                                  :errorText="validation.firstError('renderedPhotoUrl')"
+                                )
+                  .edit-form__col
+                      .edit-form__row
+                          label.input(
+                            for="title"
+                            :class="{'error' : validation.firstError('work.title')}"
+                          )
+                              .input__title Название
+                              input(
+                                type="text" 
+                                name="title" 
+                                placeholder="Введите название работы" 
+                                v-model="work.title"
+                              ).input__elem#title
+                              .edit-form-input-error
+                                error-tooltip(
+                                  :errorText="validation.firstError('work.title')"
+                                )
+                      .edit-form__row
+                          label.input(
+                            for="link"
+                            :class="{'error' : validation.firstError('work.link')}"
+                          )
+                              .input__title Ссылка
+                              input(
+                                type="text" 
+                                name="link" 
+                                placeholder="Вставьте ссылку" 
+                                v-model="work.link"
+                              ).input__elem#link
+                              .edit-form-input-error
+                                error-tooltip(
+                                  :errorText="validation.firstError('work.link')"
+                                )
+                      .edit-form__row
+                          label.input(
+                            for="description"
+                            :class="{'error' : validation.firstError('work.description')}"
+                          )
+                              .input__title Описание
+                              textarea(
+                                name="description"
+                                placeholder="Введите описание работы" 
+                                v-model="work.description"
+                              ).textarea__elem#description
+                              .edit-form-input-error
+                                error-tooltip(
+                                  :errorText="validation.firstError('work.description')"
+                                )
+                      .edit-form__row
+                        .add-tags
+                          .add-tags__wrapper
+                            label.input(
+                              for="tags"
+                              :class="{'error' : validation.firstError('editedTagsAsString')}"
+                            )
+                              .input__title Добавление тэга
+                              input.input__elem#tags(
+                                type="text"
+                                name="tags"
+                                placeholder="Добавьте теги"
+                                v-model="work.techs"
+                                @change="ADD_TAGS(work.techs)"
+                              )
+                              .edit-form-input-error
+                                error-tooltip(
+                                  :errorText="validation.firstError('editedTagsAsString')"
+                                )
+                          add-tags(v-if="workForm.editMode")    
+                              
+              .edit-form__buttons
+                  .edit-form__buttons-item
+                      button(
+                        type="button"
+                        @click="CLOSE_FORM"
+                      ).btn__clear Отмена
+                  .edit-form__buttons-item
+                      button(
+                        type="button"
+                        @click="addNewWork"
+                        v-if="!workForm.editMode"
+                      ).btn__load Загрузить
+                      button(
+                        type="button"
+                        v-if="workForm.editMode"
+                        @click="saveEditedWork"
+                      ).btn__load Сохранить
+      
 </template>
 
 <script>
@@ -248,7 +248,7 @@ export default {
 </script>
 
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 
 @import "../../../styles/mixins.pcss";
 

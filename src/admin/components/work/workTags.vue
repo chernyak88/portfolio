@@ -1,9 +1,9 @@
 <template lang="pug">
-    ul.tags
-        li.tags__item(
-            v-for="(tag, index) in tags"
-            :key="index"
-            ) {{tag}}
+  ul.tags
+    li.tags__item(
+      v-for="(tag, index) in tags"
+      :key="index"
+      ) {{tag}}
 </template>
 
 <script>
