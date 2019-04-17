@@ -40,10 +40,10 @@ export default {
   },
   methods: {
     ...mapActions('skills', ['addSkill']),
-    ...mapActions('categories', ['removeCategory']),
+    ...mapActions('categories', ['removeCategories']),
     async removeExistedCategory() {
       try {
-        await this.removeCategory(this.category.id);
+        await this.removeCategories(this.category.id);
       } catch (error) {
         alert('Произошла ошибка')
       }

@@ -20,34 +20,35 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex';
 export default {
-  props: {
-    skill: Object
-  },
-  data() {
-    return {
-      editmode: false,
-      editedSkill: {...this.skill}
-    }
-  },
-  methods: {
-    ...mapActions('skills', ['removeSkill', 'editSkill']),
-    async removeExistedSkill() {
-      try {
-        await this.removeSkill(this.skill.id);
-      } catch (error) {
-        alert('Произошла ошибка')
-      }
+    props: {
+        skill: Object
     },
-    async save() {
-      try {
-        await this.editSkill(this.editedSkill);
-        this.editmode = false;
-      } catch (error) {
-        alert('Произошла ошибка')
-      }
-    }
-  }
+    data() {
+        return {
+            editmode: false,
+            editedSkill: {...this.skill}
+        }
+    },
+    methods: {
+        ...mapActions('skills', ['removeSkill', "editSkill"]),
+        async removeExistedSkill() {
+            try { 
+                await this.removeSkill(this.skill.id);
+            } catch (error) {
+                alert('Проблема с удалением скилла');
+                
+            }
+        },
+        async save () {
+            try {
+               await this.editSkill(this.editedSkill);
+               this.editmode = false;
+            } catch (error) {
+                alert('Проблема при изменение скила');
+            }
+        }
+    },
 }
 </script>

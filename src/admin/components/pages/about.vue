@@ -11,7 +11,10 @@
       .container
         ul.admin-about__list
           li.admin-about__item(v-if="showAddingForm")
-            skills-add()
+            skills-add(
+              :showAddingForm="showAddingForm"
+                @closeNewSkillCard="showAddingForm = false"
+            )
           li.admin-about__item(
             v-for="category in categories"
             :key="category.id"
@@ -25,44 +28,43 @@
 <script>
 import { mapActions, mapState } from "vuex";
 export default {
-  components: {
-    skillsAdd: () => import('../skills-add.vue'),
-    skillsGroup: () => import('../skills-group.vue')
-  },
-  computed: {
-    ...mapState('categories', {
-      categories: state => state.categories
-    }),
-    ...mapState('skills', {
-      skills: state => state.skills
-    })
-  },
-  data() {
-    return {
-      showAddingForm: false
-    }
-  },
-  methods: {
-    ...mapActions('categories', ['fetchCategories']),
-    ...mapActions('skills', ['fetchSkills']),
-    filterSkillsByCategoryId(categoryId) {
-      return this.skills.filter(skill => skill.category === categoryId);
-    }
-  },
-  async created() {
-    try {
-      await this.fetchCategories();
-    } catch (error) {
-      alert('Произошла ошибка при загрузке категории')
-    }
-
-    try {
-      await this.fetchSkills();
-    } catch (error) {
-      alert('Произошла ошибка при загрузке skill')
-    }
-  }
-};
+    components: {
+        skillsAdd: () => import('components/skills-add.vue'),
+        skillsGroup: () => import('components/skills-group.vue')
+    },
+    data() {
+      return {
+        showAddingForm: false
+      }
+    },
+    computed: {
+      ...mapState('categories', {
+        categories: state => state.categories
+      }),
+       ...mapState('skills', {
+        skills: state => state.skills
+      })
+    },
+    methods: {
+      ...mapActions('categories', ['fetchCategories']),
+      ...mapActions('skills', ['fetchSkills']),
+      filterSkillsByCategoryId(categoryId) {
+        return this.skills.filter(skill => skill.category == categoryId);
+      }
+    },
+    async created() {
+      try {
+       await this.fetchCategories();
+      } catch (error) {
+        alert('Произошла ошибка при загрузке категорий')
+      }
+       try {
+        await this.fetchSkills();
+      } catch (error) {
+        alert('Произошла ошибка при загрузке скиллов')
+      }
+    },
+}
 </script>
 
 <style lang="postcss" scoped>

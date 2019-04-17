@@ -5,7 +5,7 @@
         input(type="text" v-model="skillTitle" placeholder="Название новой группы").admin-input
       .add-buttons
         button(type="button" @click="addSkillGroup").admin-btn.apply__btn
-        button(type="button").admin-btn.close__btn
+        button(type="button" @click="$emit('closeNewSkillCard')").admin-btn.close__btn
     .about-block__content
     .about-block__edit.blocked
       input(type="text" placeholder="Новый навык").admin-input.new-skill-input
@@ -19,17 +19,23 @@ export default {
   data() {
     return {
       skillTitle: ""
-    }
+    };
   },
   methods: {
     ...mapActions('categories', ['addNewSkillGroup']),
     async addSkillGroup() {
       try {
         await this.addNewSkillGroup(this.skillTitle);
-        this.skillTitle = "";
+        this.skillTitle= "";
+        this.$emit('closeNewSkillCard');
       } catch (error) {
-        alert(error.message)
+        alert(error.message);
+        this['SHOW_TOOLTIP']({
+          type: 'error',
+          text: 'Произошла ошибка'
+        });
       }
+      
     }
   }
 };
