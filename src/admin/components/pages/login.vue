@@ -176,6 +176,13 @@ export default {
         padding: 30px;
         border-radius: 40px 5px;
         background-image: linear-gradient(to right, #ad00ed 0%, #5500f2 100%);
+        transition: .5s;
+        outline: none;
+
+        &:hover {
+            border-radius: 5px 40px;
+            transition: .5s;
+        }
     }
 
     .input__elem {
