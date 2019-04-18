@@ -6,21 +6,22 @@
           .card__content
               .edit-form__container
                   .edit-form__col
+                    label.edit-form__btn-file
                       .edit-form__img(
                         :class="{'filled' : this.renderedPhotoUrl.length, 'error' : validation.firstError('renderedPhotoUrl')}"
                         :style="{'backgroundImage' : `url(${this.renderedPhotoUrl})`}"
                       )
                           .edit-form__img-text Перетащите или загрузите для загрузки изображения
                           label.edit-form__btn-file
-                              .btn-file-fake ЗАГРУЗИТЬ
-                              input.btn-file-input(
-                                type="file"
-                                @change="appendFileAndRenderPhoto"
-                                )
-                              .btn-file-input-error
-                                error-tooltip(
-                                  :errorText="validation.firstError('renderedPhotoUrl')"
-                                )
+                            input.btn-file-input(
+                              type="file"
+                              @change="appendFileAndRenderPhoto"
+                              )
+                            .btn-file-fake ЗАГРУЗИТЬ
+                            .btn-file-input-error
+                              error-tooltip(
+                                :errorText="validation.firstError('renderedPhotoUrl')"
+                              )
                   .edit-form__col
                       .edit-form__row
                           label.input(

@@ -22,12 +22,22 @@
       background: svg-load("cross.svg", fill=#c92e2e) center center no-repeat /
         contain;
     }
+
+    &:hover:after {
+       background: svg-load("cross.svg", fill=#000) center center no-repeat /
+        contain;
+    }
   }
 
   &.is-pencil {
     display: flex;
     &:after {
       background: svg-load("pencil.svg", fill=$text-color) center center
+        no-repeat / contain;
+    }
+
+    &:hover:after {
+       background: svg-load("pencil.svg", fill=#000) center center
         no-repeat / contain;
     }
   }
@@ -39,11 +49,21 @@
       background: svg-load("trash.svg", fill=$text-color) center center
         no-repeat / contain;
     }
+
+    &:hover:after {
+       background: svg-load("trash.svg", fill=#000) center center
+        no-repeat / contain;
+    }
   }
   &.is-tick {
     display: flex;
     &:after {
       background: svg-load("tick.svg", fill=#00d70a) center center no-repeat /
+        contain;
+    }
+
+    &:hover:after {
+       background: svg-load("tick.svg", fill=#000) center center no-repeat /
         contain;
     }
   }
@@ -59,6 +79,11 @@
     position: absolute;
     left: 26.5%;
     top: 40px;
+  }
+
+  &:hover {
+    text-decoration: none;
+    opacity: 1;
   }
 }
 
@@ -147,6 +172,15 @@
       line-height: 10px;
     }
   }
+
+  &:hover:before {
+    content: "+";
+    font-size: 88px;
+    @include phones {
+      font-size: 30px;
+    }
+  }
+  
 }
 
 .btn__title {
