@@ -1,0 +1,76 @@
+label {
+  cursor: pointer;
+}
+
+.grayscale {
+  opacity: 0.4;
+}
+
+.no-words {
+  &.btn::before {
+    margin-right: 0;
+  }
+}
+
+.title {
+  padding: 60px 0;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 34px;
+
+  .about-title-text {
+    padding: 0;
+  }
+}
+.input, .textarea {
+  position: relative;
+
+  &.error {
+    .skill__input-error {
+      display: block;
+    }
+    .edit-form-input-error {
+      display: block;
+    }
+    .reviews__form-block-error {
+      display: block;
+    }
+  }
+}
+
+.skill__input-error,
+.edit-form-input-error,
+.reviews__form-block-error {
+  display: none;
+  position: absolute;
+  top: 100%;
+  z-index: 100;
+  opacity: 0.9;
+}
+
+.input__elem {
+  padding: 10px 8%;
+  border: none;
+  border-bottom: 1px solid #414c63;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.input__title {
+  opacity: 0.5;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.textarea__elem {
+  resize: none;
+  width: 100%;
+  height: 146px;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  margin-top: 10px;
+}

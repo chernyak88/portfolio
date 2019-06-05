@@ -29,7 +29,7 @@ formBtn.addEventListener("click", e => {
       if (xhr.status >= 400) {
         popupContentModal.innerHTML = "Произошла ошибка " + xhr.status;
       } else {
-        popupContentModal.innerHTML = "Письмо отправлено";
+        popupContentModal.innerHTML = "Тестовый режим, письмо не будет отправлено";
       }
     });
   }

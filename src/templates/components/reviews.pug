@@ -8,15 +8,15 @@ script(type="text/x-template")#reviews
         button(@click="slide('next')").reviews__slider-next
           +icon('arrow-down', 'reviews__slider-next-icon')
     .reviews__content
-      ul(ref="reviews-slider").reviews__content-wrapper
+      ul.reviews__content-wrapper(ref="reviews-slider")
         li.reviews__content-item(v-for="review in reviews")
           .quote
             .quote__text {{review.text}}
             .quote__author
               .user--horizontal
                 .user__avatar
-                  img(:src="review.pic" alt="photo").user__avatar-pic
+                  img(:src="`https://webdev-api.loftschool.com/${review.photo}`").user__avatar-pic
                 .user__data
-                  .user__name {{review['user-name']}}
-                  .user__occ {{review['user-occ']}}
+                  .user__name {{review.author}}
+                  .user__occ {{review.occ}}
             
