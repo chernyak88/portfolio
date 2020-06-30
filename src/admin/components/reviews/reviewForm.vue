@@ -245,6 +245,10 @@ export default {
   }
 }
 
+.reviews__content {
+  width: 100%;
+}
+
 .reviews__form-avatar {
   width: 200px;
   height: 200px;
@@ -252,7 +256,9 @@ export default {
   border-radius: 50%;
   position: relative;
   &.filled {
-    background: center center no-repeat / cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
       &::before {
         display: none;
       }
@@ -262,8 +268,10 @@ export default {
     content: "";
     position: absolute;
     display: block;
-    background: svg-load("filled-user.svg", fill=#ffffff) center center
-      no-repeat / contain;
+    background-image: svg-load("filled-user.svg", fill=#ffffff);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

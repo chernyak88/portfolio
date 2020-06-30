@@ -65,7 +65,7 @@ export default {
     object-fit: cover;
     width: 100%;
     height: 100%;
-    background: center center no-repeat / cover;
+    background-size: cover;
   }
 }
 

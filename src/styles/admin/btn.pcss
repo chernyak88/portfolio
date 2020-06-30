@@ -19,26 +19,34 @@
   &.is-cross {
     display: flex;
     &:after {
-      background: svg-load("cross.svg", fill=#c92e2e) center center no-repeat /
-        contain;
+      background-image: svg-load("cross.svg", fill=#c92e2e);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
 
     &:hover:after {
-       background: svg-load("cross.svg", fill=#000) center center no-repeat /
-        contain;
+      background-image: svg-load("cross.svg", fill=#000);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
   }
 
   &.is-pencil {
     display: flex;
     &:after {
-      background: svg-load("pencil.svg", fill=$text-color) center center
-        no-repeat / contain;
+      background-image: svg-load("pencil.svg", fill=$text-color);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
 
     &:hover:after {
-       background: svg-load("pencil.svg", fill=#000) center center
-        no-repeat / contain;
+      background-image: svg-load("pencil.svg", fill=#000);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
   }
   &.is-trash {
@@ -46,25 +54,33 @@
     align-items: center;
     justify-content: center;
     &:after {
-      background: svg-load("trash.svg", fill=$text-color) center center
-        no-repeat / contain;
+      background-image: svg-load("trash.svg", fill=$text-color);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
 
     &:hover:after {
-       background: svg-load("trash.svg", fill=#000) center center
-        no-repeat / contain;
+      background-image: svg-load("trash.svg", fill=#000);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
   }
   &.is-tick {
     display: flex;
     &:after {
-      background: svg-load("tick.svg", fill=#00d70a) center center no-repeat /
-        contain;
+      background-image: svg-load("tick.svg", fill=#00d70a);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
 
     &:hover:after {
-       background: svg-load("tick.svg", fill=#000) center center no-repeat /
-        contain;
+      background-image: svg-load("tick.svg", fill=#000);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
   }
 }
