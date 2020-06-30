@@ -12,10 +12,10 @@ script(type="text/x-template")#slider-container
     )
 
 script(type="text/x-template")#slider-display
-  .works-slider__pics(:data-slide="currentIndex + 1")
+  .works-slider__pics(v-if="currentWork" :data-slide="currentIndex + 1")
     .works-slider__pics-content
       .works-slider__fullpic-container
-        img(:src="currentWork.photo").works-slider__fullpic
+        img(:src="`https://webdev-api.loftschool.com/${currentWork.photo}`" alt="").works-slider__fullpic
         btns(
           @slide="direction => $emit('slide', direction)"
         )
@@ -31,27 +31,28 @@ script(type="text/x-template")#slider-btns
     a(href="" @click.prevent="$emit('slide', 'prev')").works-slider__btn.works-slider__btn_prev
 
 script(type="text/x-template")#slider-thumbs
-  ul.works-slider__thumbs
+  ul.works-slider__thumbs(v-if="currentWork")
     li.works-slider__thumb-item(
       v-for="(work, index) in works" :key="work.id"
       :class="{active: currentWork.id === work.id }"
       @click.prevent="$emit('select', work.id)"
     )
-      a(href="#").works-slider__thumb-link
-        img(:src="work.photo" alt="").works-slider__thumb
+      a(href="").works-slider__thumb-link(v-if="currentWork")
+        img(:src="`https://webdev-api.loftschool.com/${work.photo}`" alt="").works-slider__thumb
 
 script(type="text/x-template")#slider-info
-  .works-slider__data
+  .works-slider__data(v-if="currentWork")
     tags(
+      :currentWork="currentWork"
       :tagsArray="tagsArray"
     )
     .works-slider__title {{currentWork.title}}
     .works-slider__desc
-      p {{currentWork.desc}}
-    .works-slider__link 
+      p {{currentWork.description}}
+    .works-slider__link
       a(:href="currentWork.link" target="_blank").iconed-link Посмотреть сайт
 
 script(type="text/x-template")#slider-tags
-  ul.works-slider__tags
-    li.works-slider__tag-item(v-for="tag in tagsArray")
+  ul.works-slider__tags(v-if="tagsArray.length")
+    li.works-slider__tag-item(v-for="(tag, index) in tagsArray")
       .tag {{tag}}
