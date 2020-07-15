@@ -37,7 +37,7 @@ script(type="text/x-template")#slider-thumbs
       :class="{active: currentWork.id === work.id }"
       @click.prevent="$emit('select', work.id)"
     )
-      a(href="").works-slider__thumb-link(v-if="currentWork")
+      a(v-if="currentWork", href="").works-slider__thumb-link
         img(:src="`https://webdev-api.loftschool.com/${work.photo}`" alt="").works-slider__thumb
 
 script(type="text/x-template")#slider-info
