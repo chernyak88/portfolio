@@ -4,11 +4,17 @@
   padding-bottom: 100px;
 
    @include super-wide {
-    background: url('~images/bg/hero_wide.jpg') center top no-repeat / cover;
+    background-image: url('~images/bg/hero_wide.jpg');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   @include tablets {
-    background: url('~images/bg/hero.jpg') center top no-repeat / cover;
+    background-image: url('~images/bg/hero.jpg');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   @include phones {
